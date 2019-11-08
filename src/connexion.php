@@ -73,7 +73,7 @@
                                 </p>
 
                                 <p>
-                                    <label for="Status" class="uname"  >Votre statut a sein de l'école : *</label>
+                                    <label for="Statut" class="uname"  >Votre statut a sein de l'école : *</label>
                                     <select name="stat"  class=form-control>
                                         <option value=0>Etudiant</option>
                                         <option value=1>Membre du BDE</option>
@@ -87,7 +87,7 @@
                                 </p>
 
                                 <p>
-                                    <label for="Status" class="uname" >Votre centre : *</label>
+                                    <label for="Centre" class="uname" >Votre centre : *</label>
                                     <select  name="centre" >
                                         <option value=1>Nanterre</option>
                                         <option value=2>Orléans</option>
@@ -102,6 +102,10 @@
                                         <option value=11>Pau</option>
                                         <option value=12>Rouen</option>
                                     </select>
+                                </p>
+
+                                <p>
+                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "mention.php"> conditions d'utilisation </a>
                                 </p>
 
                                 <p class="signin button">
