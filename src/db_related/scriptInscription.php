@@ -7,7 +7,7 @@ require "../menu.php";
 
 
 if($_POST['confirmPassword'] != $_POST['motDePasse'])
-    header("Location: /src/connexion.php#toregister");
+    header("Location: ./ressources/connexion.php#toregister");
 
 $bdd = db_national::getInstance();
 
@@ -15,7 +15,7 @@ $email = $_POST['email'];
 $_POST['stat'] = (int)$_POST['stat'];
 $_POST['centre'] = (int)$_POST['centre'];
 
-var_dump($_POST);
+//var_dump($_POST);
 
 // Requête préparée pour empêcher les injections SQL
 //$requete = $bdd->prepare("SELECT (email, motDePasse) FROM utilisateurs WHERE email=:email");
@@ -34,6 +34,7 @@ $requete->execute();
 
 $requete->closeCursor();
 
+echo "<script type='text/javascript'>document.location.replace('../connexion.php#tologin');</script>";
 
 ?>
 
