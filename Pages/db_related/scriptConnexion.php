@@ -3,7 +3,6 @@
 include("config.php");
 
 $bdd = db_national::getInstance();
-$arr = array();
 
 $email = $_POST['email'];
 $motDePasse = $_POST['motDePasse'];
@@ -22,7 +21,7 @@ var_dump($arr);
 
 if ($arr != NULL) {
         echo 'Logged in as '.$_POST['email'];
-        setcookie('username', $email, time() + 365*24*3600, null, null, false, true); 
+        setcookie('email', $email, time() + 365*24*3600, null, null, false, true); 
 }else{
     echo 'Unknown login ! Try again, you entered : '.$email.' '.$motDePasse;
 }
