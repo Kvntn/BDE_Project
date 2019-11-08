@@ -1,14 +1,17 @@
 
 .footer {
-  margin-top: 60%;
+  margin-top: 50%;
   position: fixed;
   left: 0;
   bottom: 0;
+  height: 45px;
   width: 100%;
   background-color: #343a40;
 }
 
 .footer-icon {
-  color : black;
+  margin-left:20px;
+  color : whitesmoke;
   font-size: 30px;
+  content: black;
 }
