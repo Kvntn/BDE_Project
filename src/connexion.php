@@ -73,7 +73,7 @@
                                 </p>
 
                                 <p>
-                                    <label for="Status" class="uname"  >Votre statut a sein de l'école : *</label>
+                                    <label for="Statut" class="uname"  >Votre statut a sein de l'école : *</label>
                                     <select name="stat"  class=form-control>
                                         <option value=0>Etudiant</option>
                                         <option value=1>Membre du BDE</option>
@@ -87,7 +87,7 @@
                                 </p>
 
                                 <p>
-                                    <label for="Status" class="uname" >Votre centre : *</label>
+                                    <label for="Centre" class="uname" >Votre centre : *</label>
                                     <select  name="centre" >
                                         <option value=1>Nanterre</option>
                                         <option value=2>Orléans</option>
