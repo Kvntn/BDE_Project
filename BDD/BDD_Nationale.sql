@@ -23,7 +23,7 @@ CREATE TABLE Utilisateurs(
         IDutilisateur Int  Auto_increment  NOT NULL ,
         Email         Varchar (50) NOT NULL ,
         MotDePasse    Varchar (50) NOT NULL ,
-        Status        Int NOT NULL ,
+        Statut        Int NOT NULL ,
         PhotoDeProfil Text NOT NULL ,
         IDCentre      Int NOT NULL
 	,CONSTRAINT Utilisateurs_PK PRIMARY KEY (IDutilisateur)
