@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/src/index.php">BDE Project</a>
+    <a class="navbar-brand" href="index.php">BDE Project</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,11 +8,11 @@
 
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/src/connexion.php#toregister">Inscription<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="connexion.php#toregister">Inscription<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/src/connexion.php#tologin">Connexion</a>
+                <a class="nav-link" href="connexion.php#toconnection">Connexion</a>
             </li>
 
             <li class="nav-item">

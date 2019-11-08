@@ -15,3 +15,13 @@
   font-size: 30px;
   content: black;
 }
+
+.blog-sidebar {
+  margin-top:40px;
+  background-color: #343a40;
+  margin-bottom: 35px;
+}
+
+ .blog-sidebar a {
+  color: whitesmoke;
+ }
