@@ -68,6 +68,11 @@
                                 </p>
 
                                 <p>
+                                    <label for="passwordsignup" class="youpasswd"  >Réécrivez votre mot de passe : *</label>
+                                    <input id="passwordsignup" name = "confirmPassword" required="required" type="password" placeholder="Saisissez un mot de passe"/>
+                                </p>
+
+                                <p>
                                     <label for="Status" class="uname"  >Votre statut a sein de l'école : *</label>
                                     <select name="stat" class=form-control>
                                         <option value="0">Etudiant</option>

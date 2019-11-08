@@ -1,15 +1,26 @@
 <?php
 
-include("config.php");
+include "config.php";
+require "../head.php";
+require "../menu.php";
+
+
+if($_POST['confirmPassword'] != $_POST['motDePasse'])
+    header("Location: /src/connexion.php#toregister");
+
 
 $bdd = db_national::getInstance();
+
+//TODO : strpos(@viacesi.fr)
 
 var_dump($_POST);
 
 $email = $_POST['email'];
 
+$stat = intval($_POST['stat']);
+$centre = intval($_POST['centre']);
+
 // Requête préparée pour empêcher les injections SQL
-//$requete = $bdd->prepare("SELECT (email, motDePasse) FROM utilisateurs WHERE email=:email");
 //$requete = $bdd->prepare("SELECT (email, motDePasse) FROM utilisateurs WHERE email=:email");
 
 $requete = $bdd->prepare("INSERT INTO `utilisateurs`(
@@ -19,9 +30,9 @@ $requete = $bdd->prepare("INSERT INTO `utilisateurs`(
 
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
-$requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
+$requete->bindValue(':stat', $stat, PDO::PARAM_INT);
 $requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
-$requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
+$requete->bindValue(':centre', $centre, PDO::PARAM_INT);
 
 $requete->execute();
 $arr = $requete->fetchAll();
