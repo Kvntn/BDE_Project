@@ -1,5 +1,5 @@
 <?php
-
+echo '<br><br><br><br><br>';
 include "config.php";
 require "../head.php";
 require "../menu.php";
@@ -17,8 +17,10 @@ var_dump($_POST);
 
 $email = $_POST['email'];
 
-$stat = intval($_POST['stat']);
-$centre = intval($_POST['centre']);
+(int)$_POST['stat'];
+(int)$_POST['centre'];
+
+var_dump($_POST);
 
 // Requête préparée pour empêcher les injections SQL
 //$requete = $bdd->prepare("SELECT (email, motDePasse) FROM utilisateurs WHERE email=:email");
