@@ -3,7 +3,8 @@
 
   <?php  
     include("head.php");
-    include("menu.php");
+    include("nav.php");
+    include("footer.php");
   ?>
 
 </html>
