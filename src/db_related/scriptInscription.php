@@ -33,5 +33,7 @@ $requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
 $requete->execute();
 
 $requete->closeCursor();
+
+
 ?>
 
