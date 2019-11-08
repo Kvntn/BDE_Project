@@ -104,6 +104,10 @@
                                     </select>
                                 </p>
 
+                                <p>
+                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "mention.php"> conditions d'utilisation </a>
+                                </p>
+
                                 <p class="signin button">
                                     <input type="submit" value="S'inscrire"/>
                                 </p>

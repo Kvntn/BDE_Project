@@ -6,7 +6,7 @@ require "../menu.php";
 
 
 if($_POST['confirmPassword'] != $_POST['motDePasse'])
-    header("Location: /src/connexion.php#toregister");
+    header("Location: ./ressources/connexion.php#toregister");
 
 
 $bdd = db_national::getInstance();
