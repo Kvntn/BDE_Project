@@ -23,7 +23,7 @@
     <div id="corps">
 
         <!-- Le menu -->
-        <?php include("menu.php");
+        <?php include("nav.php");
         $strUname=isset($_COOKIE['email']) ? $_COOKIE['email'] : "";
         ?>
         <div class="container">
