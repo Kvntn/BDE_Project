@@ -24,7 +24,8 @@
 
         <!-- Le menu -->
         <?php include("nav.php");
-        $strUname=isset($_COOKIE['email']) ? $_COOKIE['email'] : "";
+        $strEmail=isset($_COOKIE['email']) ? $_COOKIE['email'] : "";
+        $strPw=isset($_COOKIE['pw']) ? $_COOKIE['pw'] : "";
         ?>
         <div class="container">
             <section>
@@ -37,11 +38,11 @@
                                 <h1>Connexion</h1>
                                 <p> 
                                     <label for="email" class="uname"  > Email : </label>
-                                    <input id="email" name="email" required="required" type="text" placeholder="Email" value="<?php print($strUname); ?>" />
+                                    <input id="email" name="email" required="required" type="text" placeholder="Email" value="<?php print($strEmail); ?>" />
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" > Mot de passe : </label>
-                                    <input id="password" name="motDePasse" required="required" type="password" placeholder="motdepasse" />
+                                    <input id="password" name="motDePasse" required="required" type="password" placeholder="motdepasse" value="<?php print($strPw); ?>" />
                                 </p>
 
                                 <p class="login button">

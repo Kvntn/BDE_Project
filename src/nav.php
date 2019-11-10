@@ -15,6 +15,15 @@
                 <a class="nav-link" href="connexion.php#toconnection">Connexion</a>
             </li>
 
+            <?php 
+            if(isset($_SESSION['email'])){
+                echo "
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"disconnect.php\">Deconnection</a>
+                </li>";
+                var_dump($_SESSION);
+            } 
+            ?>
             <li class="nav-item">
             <a class="nav-link" href="shop.php#toconnection">Boutique</a>
             </li>
