@@ -1,0 +1,38 @@
+
+.footer {
+  margin-top: 50%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 45px;
+  width: 100%;
+  background-color: #343a40;
+}
+
+.footer-icon {
+  margin-left:20px;
+  color : whitesmoke;
+  font-size: 30px;
+  content: black;
+}
+
+.blog-sidebar {
+  margin-top:40px;
+  background-color: #343a40;
+  margin-bottom: 35px;
+}
+
+.blog-sidebar a {
+  color: whitesmoke;
+ }
+
+.container-shop {
+  padding:20px;
+  padding-right:250px;
+}
+
+.legal-container {
+  margin-top:43px;
+  padding:15px;
+  padding-right:40px;
+}

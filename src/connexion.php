@@ -23,7 +23,7 @@
     <div id="corps">
 
         <!-- Le menu -->
-        <?php include("menu.php");
+        <?php include("nav.php");
         $strUname=isset($_COOKIE['email']) ? $_COOKIE['email'] : "";
         ?>
         <div class="container">
@@ -68,11 +68,16 @@
                                 </p>
 
                                 <p>
-                                    <label for="Status" class="uname"  >Votre statut a sein de l'école : *</label>
-                                    <select name="stat" class=form-control>
-                                        <option value="0">Etudiant</option>
-                                        <option value="1">Membre du BDE</option>
-                                        <option value="2">Personnel du CESI</option>
+                                    <label for="passwordsignup" class="youpasswd"  >Réécrivez votre mot de passe : *</label>
+                                    <input id="passwordsignup" name = "confirmPassword" required="required" type="password" placeholder="Saisissez un mot de passe"/>
+                                </p>
+
+                                <p>
+                                    <label for="Statut" class="uname"  >Votre statut a sein de l'école : *</label>
+                                    <select name="stat"  class=form-control>
+                                        <option value=0>Etudiant</option>
+                                        <option value=1>Membre du BDE</option>
+                                        <option value=2>Personnel du CESI</option>
                                     </select>
                                 </p>
 
@@ -82,21 +87,25 @@
                                 </p>
 
                                 <p>
-                                    <label for="Status" class="uname" >Votre centre : *</label>
+                                    <label for="Centre" class="uname" >Votre centre : *</label>
                                     <select  name="centre" >
-                                        <option value="1">Nanterre</option>
-                                        <option value="2">Orléans</option>
-                                        <option value="3">Arras</option>
-                                        <option value="4">Lille</option>
-                                        <option value="5">La Rochelle</option>
-                                        <option value="6">Strasbourg</option>
-                                        <option value="7">Grenoble</option>
-                                        <option value="8">Nice</option>
-                                        <option value="9">Montpellier</option>
-                                        <option value="10">Bordeaux</option>
-                                        <option value="11">Pau</option>
-                                        <option value="12">Rouen</option>
+                                        <option value=1>Nanterre</option>
+                                        <option value=2>Orléans</option>
+                                        <option value=3>Arras</option>
+                                        <option value=4>Lille</option>
+                                        <option value=5>La Rochelle</option>
+                                        <option value=6>Strasbourg</option>
+                                        <option value=7>Grenoble</option>
+                                        <option value=8>Nice</option>
+                                        <option value=9>Montpellier</option>
+                                        <option value=10>Bordeaux</option>
+                                        <option value=11>Pau</option>
+                                        <option value=12>Rouen</option>
                                     </select>
+                                </p>
+
+                                <p>
+                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "mention.php"> conditions d'utilisation </a>
                                 </p>
 
                                 <p class="signin button">
