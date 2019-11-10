@@ -20,7 +20,7 @@
     </header>
 
     <!-- Le corps -->
-    <div id="corps">
+    <div id="corps">   
 
         <!-- Le menu -->
         <?php include("nav.php");
