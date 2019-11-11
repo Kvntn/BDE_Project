@@ -11,9 +11,11 @@ CREATE TABLE Utilisateurs(
         IDUtilisateur Int  Auto_increment  NOT NULL ,
         Email         Varchar (255) NOT NULL ,
         MotDePasse    Varchar (255) NOT NULL ,
-        Satut         Int NOT NULL ,
+        Statut         Int NOT NULL ,
         PhotoDeProfil Varchar (255) NOT NULL
 	,CONSTRAINT Utilisateurs_PK PRIMARY KEY (IDUtilisateur)
+
+	,CONSTRAINT Utilisateurs_Panier_FK FOREIGN KEY (IDPanier) REFERENCES Panier(IDPanier)
 )ENGINE=InnoDB;
 
 
