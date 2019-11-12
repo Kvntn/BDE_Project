@@ -13,32 +13,33 @@
             <a class="nav-link" href="event.php">Event</a>
           </li>
         </ul>
+        <ul class="navbar-nav mr-auto">
+            <?php 
+                if(isset($_SESSION['login'])){
+                    $fname = $_COOKIE['firstname'];
+                    echo "
+                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"profile_edit.php\">Editer le profil</a></li>
+                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"disconnect.php\">Deconnection</a></li>";
 
-    <?php 
-        if(isset($_SESSION['login'])){
-            $fname = $_COOKIE['firstname'];
-            echo "
-            <li class=\"nav-item\"><a class=\"nav-link\" href=\"profile_edit.php\">Editer le profil</a></li>
-            <li class=\"nav-item\"><a class=\"nav-link\" href=\"disconnect.php\">Deconnection</a></li>";
-
-            //TODO: DROPDOWN MENU FOR ACCOUNT AND SESSION MANAGEMENT
-            /*echo "
-            <div class=\"dropdown\">
-                <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Bonjour, $fname
-                <span class=\"caret\"></span></button>
-                <ul class=\"dropdown-menu\">
-                    <li><a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a></li>
-                    <li><a class=\"dropdown-item\" href=\"disconnect.php\">Deconnection</a></li>
-                </ul>
-            </div>";*/
-        } 
-        
-        if(!isset($_SESSION['login'])){
-            $fname = $_COOKIE['firstname'];
-            echo "
-            <a class=\"nav-link\" href=\"connexion.php#toregister\">Inscription</a>
-            <a class=\"nav-link\" href=\"connexion.php#tologin\">Connexion</a>";
-        }
-        ?>
+                    //TODO: DROPDOWN MENU FOR ACCOUNT AND SESSION MANAGEMENT
+                    /*echo "
+                    <div class=\"dropdown\">
+                        <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Bonjour, $fname
+                        <span class=\"caret\"></span></button>
+                        <ul class=\"dropdown-menu\">
+                            <li><a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a></li>
+                            <li><a class=\"dropdown-item\" href=\"disconnect.php\">Deconnection</a></li>
+                        </ul>
+                    </div>";*/
+                } 
+                
+                if(!isset($_SESSION['login'])){
+                    $fname = $_COOKIE['firstname'];
+                    echo "
+                    <a class=\"nav-link\" href=\"connexion.php#toregister\">Inscription</a>
+                    <a class=\"nav-link\" href=\"connexion.php#tologin\">Connexion</a>";
+                }
+            ?>
+        </ul>
       </div>
     </nav>

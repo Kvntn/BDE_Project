@@ -5,10 +5,8 @@
   session_start();
   include("head.php");
   include("nav.php");
-  include("aside.php"); 
   echo "<br><br><br>";
 
-  var_dump($_SESSION);
 ?>
 <body>
 
@@ -72,6 +70,7 @@
       </div>
     </div>
   </div>
+  <br><br><br>
 </div>
 
 
@@ -80,4 +79,3 @@
 <?php include("footer.php");?>
 
 </html>
-
