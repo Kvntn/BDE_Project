@@ -1,13 +1,11 @@
 
 .footer {
   margin-top: 50%;
-  position: fixed;
   left: 0;
   bottom: 0;
   height: 45px;
   width: 100%;
   background-color: #343a40;
-
 }
 
 .footer-icon {
@@ -18,7 +16,17 @@
 
 }
 
+.faceI i:hover{
+  color:#3b5998;
+}
 
+.twiI i:hover {
+  color:#1da1f2;
+}
+
+.instaI i:hover {
+  color:#e1306c;
+}
 
 .container-shop {
   margin-top: 35px;
