@@ -10,14 +10,11 @@
 
 <?php 
     include("head.php");
+    include("footer.php");
+    include("aside.php");
 ?>
 
     <body>
-
-    <!-- L'en-tête -->
-    <header>
-    <h1><strong>BDE</strong>Project</h1>
-    </header>
 
     <!-- Le corps -->
     <div id="corps">   
@@ -82,10 +79,10 @@
                                     </select>
                                 </p>
 
-                                <p>
+                                <!--<p>
                                     <label for="Photo" class="uname"  >Photo : </label>
                                     <input id="Photosignup" name="Photo" type="text" placeholder="Lien vers votre photo de profil" />
-                                </p>
+                                </p>-->
 
                                 <p>
                                     <label for="Centre" class="uname" >Votre centre : *</label>
