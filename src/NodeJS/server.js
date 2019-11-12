@@ -62,7 +62,7 @@ app.get('/utilisateurs/:id', function (req, res) {
 });
 
 // Add a new user  
-app.post('/user', function (req, res) {
+app.post('/utilisateurs', function (req, res) {
     let user = req.body.user;
     if (!user) {
         return res.status(400).send({

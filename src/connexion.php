@@ -11,14 +11,13 @@
 <?php 
     include("head.php");
     include("footer.php");
-    include("aside.php");
 ?>
 
     <body>
 
     <!-- Le corps -->
     <div id="corps">   
-
+        <br><br><br><br>
         <!-- Le menu -->
         <?php include("nav.php");
         $strEmail=isset($_COOKIE['email']) ? $_COOKIE['email'] : "";
@@ -103,7 +102,7 @@
                                 </p>
 
                                 <p>
-                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "mention.php"> conditions d'utilisation </a>
+                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "legalnotice.php"> conditions d'utilisation </a>
                                 </p>
 
                                 <p class="signin button">
@@ -118,7 +117,7 @@
                     </div>
                 </div>
             </section>
-           <br><br><br><br><br><br><br><br>
+           <br>
            <p><i>* : champs obligatoires </i></p>
         </div>
     </div>
