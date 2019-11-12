@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExample02">
+      <div class="collapse navbar-collapse" id="navbars">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="shop.php">Boutique</a>
@@ -12,39 +12,43 @@
           <li class="nav-item">
             <a class="nav-link" href="event.php">Event</a>
           </li>
-        </ul>
-
-        <ul class="navbar-nav mr-auto">
-            <?php 
-
+        
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-lg"></i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <?php
                 if(!isset($_COOKIE['firstname']))
                     $_COOKIE['firstname'] = 'user';
 
                 if(isset($_SESSION['login'])){
                     $fname = $_COOKIE['firstname'];
                     echo "
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"profile_edit.php\">Editer le profil</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"disconnect.php\">Deconnection</a></li>";
-
-                    //TODO: DROPDOWN MENU FOR ACCOUNT AND SESSION MANAGEMENT
-                    /*echo "
-                    <div class=\"dropdown\">
-                        <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Bonjour, $fname
-                        <span class=\"caret\"></span></button>
-                        <ul class=\"dropdown-menu\">
-                            <li><a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a></li>
-                            <li><a class=\"dropdown-item\" href=\"disconnect.php\">Deconnection</a></li>
-                        </ul>
-                    </div>";*/
+                    <a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a>
+                    <a class=\"dropdown-item\" href=\"disconnect.php\">Deconnection</a>";
                 } 
                 
                 if(!isset($_SESSION['login'])){
                     $fname = $_COOKIE['firstname'];
                     echo "
-                    <a class=\"nav-link\" href=\"connexion.php#toregister\">Inscription</a>
-                    <a class=\"nav-link\" href=\"connexion.php#tologin\">Connexion</a>";
+                    <a class=\"dropdown-item\" href=\"connexion.php#toregister\">Inscription</a>
+                    <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
                 }
             ?>
-        </ul>
+            
+            </div>
+          </li>  
+          
+
+        </ul> 
+
       </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
     </nav>
+
+
+    
