@@ -60,3 +60,23 @@
 .container-side {
   padding-top:25px;
 }
+
+@media (max-width: 800px) {
+  .container-side {
+    display: none;
+    padding-top:25px;
+  }
+
+  .legal-container {
+    margin-top:43px;
+    padding:15px;
+    margin-left: 20px;
+    margin-bottom:35px;
+  }
+
+  .container-shop {
+    padding:20px;
+    padding-left:20px;
+    overflow-x: hidden;
+  }
+}
