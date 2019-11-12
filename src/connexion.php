@@ -82,10 +82,10 @@
                                     </select>
                                 </p>
 
-                                <p>
+                                <!--<p>
                                     <label for="Photo" class="uname"  >Photo : </label>
                                     <input id="Photosignup" name="Photo" type="text" placeholder="Lien vers votre photo de profil" />
-                                </p>
+                                </p>-->
 
                                 <p>
                                     <label for="Centre" class="uname" >Votre centre : *</label>
