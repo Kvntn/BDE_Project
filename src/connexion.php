@@ -61,7 +61,7 @@
 
                                 <p>
                                     <label for="passwordsignup" class="youpasswd"  >Mot de passe : *</label>
-                                    <input id="passwordsignup" name="motDePasse" required="required" type="password" placeholder="Saisissez un mot de passe"/>
+                                    <input id="passwordsignup" pattern=".{6,}" name="motDePasse" required="required" type="password" placeholder="Saisissez un mot de passe"/>
                                 </p>
 
                                 <p>
