@@ -8,7 +8,9 @@ include("aside.php");
 ?>
 
 <div class="privacy_policy">
-<section class="mainSection"><div class="kicker"><p>CESI est engagé dans une démarche continue de conformité avec le Règlement général sur la protection des données du 27 avril 2016. Avec ce nouveau règlement CESI renforce sa politique de protection de données personnelles afin que les données de nos utilisateurs soient collectées et utilisées de manière transparente, confidentielle et sécurisée.
+<section class="mainSection"><div class="kicker">
+<br>
+<p>CESI est engagé dans une démarche continue de conformité avec le Règlement général sur la protection des données du 27 avril 2016. Avec ce nouveau règlement CESI renforce sa politique de protection de données personnelles afin que les données de nos utilisateurs soient collectées et utilisées de manière transparente, confidentielle et sécurisée.
 </p>
 </div>
 <h2 class="_display">Politique de protection des données personnelles à partir du 25 mai 2018</h2>
