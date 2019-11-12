@@ -13,9 +13,10 @@
             <a class="nav-link" href="event.php">Event</a>
           </li>
         </ul>
+
         <ul class="navbar-nav mr-auto">
             <?php 
-                if(isset($_SESSION['login'])){
+                @if(isset($_SESSION['login'])){
                     $fname = $_COOKIE['firstname'];
                     echo "
                     <li class=\"nav-item\"><a class=\"nav-link\" href=\"profile_edit.php\">Editer le profil</a></li>
@@ -33,7 +34,7 @@
                     </div>";*/
                 } 
                 
-                if(!isset($_SESSION['login'])){
+                @if(!isset($_SESSION['login'])){
                     $fname = $_COOKIE['firstname'];
                     echo "
                     <a class=\"nav-link\" href=\"connexion.php#toregister\">Inscription</a>
