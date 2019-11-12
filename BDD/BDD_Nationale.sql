@@ -24,7 +24,7 @@ CREATE TABLE Utilisateurs(
         Email         Varchar (50) NOT NULL ,
         MotDePasse    Varchar (50) NOT NULL ,
         Statut        Int NOT NULL ,
-        PhotoDeProfil Text NOT NULL ,
+        PhotoDeProfil Varchar (255) NULL ,
         IDCentre      Int NOT NULL
 	,CONSTRAINT Utilisateurs_PK PRIMARY KEY (IDutilisateur)
 
