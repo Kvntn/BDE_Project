@@ -45,7 +45,7 @@
           </p>-->
           <p>
             <label> Mettre une photo de profil :</label>
-            <imput type="file" name="Photo"/>
+            <input type="file" name="Photo"/>
           </p> 
 
           <p>
