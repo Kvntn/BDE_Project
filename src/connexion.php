@@ -10,14 +10,11 @@
 
 <?php 
     include("head.php");
+    include("footer.php");
+    include("aside.php");
 ?>
 
     <body>
-
-    <!-- L'en-tête -->
-    <header>
-    <h1><strong>BDE</strong>Project</h1>
-    </header>
 
     <!-- Le corps -->
     <div id="corps">   
