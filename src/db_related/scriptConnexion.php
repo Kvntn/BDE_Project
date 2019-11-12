@@ -34,6 +34,7 @@ if ($arr != NULL) {
         $tmp[0] = ucfirst($tmp[0]);
         $tmp[1] = ucfirst($tmp[1]);
         $_SESSION = $_POST;
+        $_SESSION['login'] = true;
 
         echo "Logged in as $tmp[1] $tmp[0] !";
 
