@@ -32,7 +32,7 @@
                     $fname = $_COOKIE['firstname'];
                     echo "
                     <a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a>
-                    <a class=\"dropdown-item\" href=\"disconnect.php\">Deconnection</a>";
+                    <a class=\"dropdown-item\" href=\"disconnect.php\">Déconnexion</a>";
                 } 
                 
                 if(!isset($_SESSION['login'])){
