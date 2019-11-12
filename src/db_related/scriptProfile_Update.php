@@ -33,6 +33,12 @@ if($_POST['conf_newpw'] != $_POST['newpw']){
     sleep(3);
     header("Location: ../connexion.php#toregister");
 }
+
+/*if(isset($_FILES['pdp']) AND !empty($_FILES['pdp']['name']))
+{
+    $tailleMax = 2097152;
+    $extentionsValides = array('jpg', 'jpeg', 'gif', 'png');
+}*/
     
 $_POST['newpw'] = md5($_POST['newpw']);
 
