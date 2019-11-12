@@ -19,25 +19,7 @@
         <a class="nav-link" href="shop.php#toconnection">Boutique</a>
         </li>
 
-        <?php 
-        if(isset($_SESSION['email'])){
-            $fname = $_COOKIE['firstname'];
-            echo "
-            <li class=\"nav-item\"><a class=\"nav-link\" href=\"profile_edit.php\">Editer le profil</a></li>
-            <li class=\"nav-item\"><a class=\"nav-link\" href=\"disconnect.php\">Deconnection</a></li>";
-
-            //TODO: DROPDOWN MENU FOR ACCOUNT AND SESSION MANAGEMENT
-            /*echo "
-            <div class=\"dropdown\">
-                <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Bonjour, $fname
-                <span class=\"caret\"></span></button>
-                <ul class=\"dropdown-menu\">
-                    <li><a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a></li>
-                    <li><a class=\"dropdown-item\" href=\"disconnect.php\">Deconnection</a></li>
-                </ul>
-            </div>";*/
-        } 
-        ?>
+        
         </ul>
     </div>
 </nav>

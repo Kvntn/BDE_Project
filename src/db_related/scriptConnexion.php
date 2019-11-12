@@ -42,8 +42,8 @@ if ($arr != NULL) {
         setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
         setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true); 
 
-        sleep(5);
-        header('Location: ../index.php');
+        
+        header('Locasleep(5);tion: ../index.php');
 }else{
     echo '<h2>Unknown login ! Try again, you entered : '.$email.'</h2>';
     session_destroy();
