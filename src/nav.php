@@ -15,6 +15,10 @@
         </ul>
         <ul class="navbar-nav mr-auto">
             <?php 
+
+                if(!isset($_COOKIE['firstname']))
+                    $_COOKIE['firstname'] = 'user';
+
                 if(isset($_SESSION['login'])){
                     $fname = $_COOKIE['firstname'];
                     echo "
