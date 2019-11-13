@@ -1,19 +1,15 @@
-<<<<<<< HEAD
+
 <!doctype html>
 <html lang="fr">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <body>
   <div class="album py-5 bg-light">
-    <div class="container-shop">      
-      <div class="row">
-        <div class="col-md-4">
-         <form action="" method="get">
-          <button name = "button" type="submit" value="previous">previous</button>
-          <br>
-          <button name = "button" type="submit" value="next">next</button>
-         </form> 
-        </div>
-        <div class="col-md-4">
+    <div class="container-shop">
+    <form action="" method="get">
+    <button name = "button" type="submit" value="previous">previous</button>
+    <button name="button" type="submit" value="next">next</button>
+  </form> 
+    <div class="row">
           <?php
           
           require('./productDisplay.php');
@@ -25,29 +21,31 @@
           }
           $bdd = db_local::getInstance();
           $minid = 0;
+          if (isset($_GET['button'])){
           switch ($_GET['button'])
           {
               case "previous" :
-              $minid = $minid-4;
+                $minid = $minid-6;
               if($minid < 0){ $minid = 0;}
               break;
               case "next" :
-              $minid = $minid+4;
+              $minid = $minid+6;
               break;
               default :
               $minid = 0;
               break;
           }
-          $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit >= $minid LIMIT 4");
+        }
+          $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit >= $minid LIMIT 6");
           $requete->execute();
           $listproducts = $requete->fetchAll();
           $products = new Product($listproducts);
           $products->display($listproducts);
           ?>
-        </div>
-      </div>
     </div>
   </div>
+  </div>
+    
 </body>
 </html>
 
@@ -156,7 +154,6 @@
                 </div>
               </div>
             </div>
->>>>>>> 99c2e6fe025170e3d33585f347f1c565eec25350
 -->
 
 
