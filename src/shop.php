@@ -50,14 +50,14 @@
   </div>
 </body>
 </html>
-=======
+
 <?php  
     include("head.php");
     include("nav.php");
     include("footer.php");
     include("aside.php");
 ?>
-
+<!--
 
 <div class="album py-4 bg-light">
         <div class="container-shop">
@@ -157,7 +157,7 @@
               </div>
             </div>
 >>>>>>> 99c2e6fe025170e3d33585f347f1c565eec25350
-
+-->
 
 
 
