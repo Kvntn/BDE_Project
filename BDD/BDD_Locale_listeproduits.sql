@@ -1,0 +1,9 @@
+INSERT INTO `listeproduits`(`NomProduit`, `Description`, `Prix`, `Photo`, `Categorie`) VALUES 
+('Hoodie noir et rouge', 'Hoodie aux couleurs du CESI. Taille unique.', 42, 'https://scene7.zumiez.com/is/image/zumiez/pdp_hero/Broken-Promises-Red-Handed-Black-%26-Red-Hoodie-_304917.jpg', 'Hoodie'),
+('Hoodie noir et rouge EXIA', 'Hoodie aux couleurs du CESI pour les informaticiens. Taille unique.', 42, 'http://www.conda-racing.com/wp-content/uploads/2018/05/cookies-mens-hoodies-sweatshirts-thin-mint-black-red-hoodie-black.jpg', 'Hoodie'),
+('Hoodie bleu blanc rouge', 'Hoodie aux couleurs du CESI et de la France. Taille unique.', 42, 'https://cdn.laboutiqueofficielle.com/resize/427x427-s/products/2017/05/04/lbo_104788_FAB_SHALBO-192_20190821T145302_01.jpg', 'Hoodie'),
+('The tale of the body thief', 'Livre en anglais, pour mieux reussir votre TOEIC. Auteur : Anne Rice.', 18, 'https://images-na.ssl-images-amazon.com/images/I/41QFGCNHcVL._SX324_BO1,204,203,200_.jpg', 'Livre'),
+('A legacy of spies', 'Livre en anglais, pour mieux reussir votre TOEIC. Auteur : John LeCarré', 15, 'https://cdn.shopify.com/s/files/1/0072/3176/6580/products/180712134533_Cropped_201_13_jpg.jpg?v=1553962555', 'Livre'),
+('Intellectual biography of Karl Marx', 'Livre en anglais. Auteur : Rolf Hosefeld', 1, 'https://www.berghahnbooks.com/covers/HosfeldKarl.jpg', 'Livre'),
+('T-shirt graphique', 'T-shirt graphique imprimé CESI. Taille unique.', 12, 'https://images-na.ssl-images-amazon.com/images/I/51g3UHuikPL._UL1001_.jpg', 'T-shirt'),
+('T-shirt rayé', 'T-shirt rayé aux couleurs du CESI. Taille unique.', 12, 'https://images-na.ssl-images-amazon.com/images/I/9154ck3O59L._UX522_.jpg', 'T-shirt')

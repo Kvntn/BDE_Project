@@ -1,4 +1,3 @@
-
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="index.php">BDE</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
@@ -46,9 +45,9 @@
       </li>
     </ul>
 
-    <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-    </form>
+    <?php
+      include("search.php");
+    ?>
     
   </div>
 

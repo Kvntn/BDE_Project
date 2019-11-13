@@ -26,7 +26,24 @@ try{
 include "../head.php";
 include "../nav.php";
 
+// PASSWORD CHECK a-z A-Z 0-9  @!:;,§/?*µ$=+
+$char = "abcdefghijklmnopqrstuvwyxz0123456789@!:;,§/?*µ$=+";
+$nb_char = 6;
+$password = $_POST['motDePasse'];
 
+
+if (strlen($password) < $nb_char) {
+    echo "Mot de passe trop court !";
+}
+
+if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)) {
+    echo 'Mot de passe conforme';
+} else {
+    header('Location: ../connexion.php#tologin');
+}	
+
+
+/*
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
     sleep(3);
@@ -41,6 +58,12 @@ if(!endsWith($_POST['email'], '@viacesi.fr')) {
     sleep(3);
     header("Location: ../connexion.php#toregister");
 }
+
+if(!isset($_POST['Photo'])) {
+    $_POST = null;
+}
+
+
 
 $bdd = db_national::getInstance();
 
@@ -115,6 +138,6 @@ $requete->closeCursor();
 
 
  header("Location: ../connexion.php#tologin");
-
+*/
 ?>
 
