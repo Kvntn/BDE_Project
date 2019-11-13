@@ -6,8 +6,8 @@
   <div class="album py-5 bg-light">
     <div class="container-shop">
     <form action="" method="get">
-    <button name = "button" type="submit" value="previous">previous</button>
-    <button name="button" type="submit" value="next">next</button>
+    <button name="button" class="btn btn-dark" type="submit" value="previous">previous</button>
+    <button name="button" class="btn btn-dark" type="submit" value="next">next</button>
   </form> 
     <div class="row">
           <?php
