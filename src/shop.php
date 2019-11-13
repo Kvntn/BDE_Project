@@ -36,7 +36,7 @@
               break;
           }
         }
-          $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit >= $minid LIMIT 6");
+          $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit > $minid LIMIT 6");
           $requete->execute();
           $listproducts = $requete->fetchAll();
           $products = new Product($listproducts);
