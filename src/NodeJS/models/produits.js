@@ -1,39 +1,46 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('utilisateurs', {
-    IDUtilisateur: {
+  return sequelize.define('produits', {
+    IDProduit: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    Email: {
+    NomProduit: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    MotDePasse: {
+    Description: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    Statut: {
+    Prix: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    PhotoProduit: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    Quantite: {
       type: DataTypes.INTEGER(11),
       allowNull: false
     },
-    PhotoDeProfil: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    Prix_Total: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
     },
-    IDPanier: {
+    IDCommande: {
       type: DataTypes.INTEGER(11),
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'panier',
-        key: 'IDPanier'
-      },
-      unique: true
+        model: 'commande',
+        key: 'IDCommande'
+      }
     }
   }, {
-    tableName: 'utilisateurs'
+    tableName: 'produits'
   });
 };

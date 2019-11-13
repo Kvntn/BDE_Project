@@ -29,7 +29,8 @@ include "../nav.php";
 // PASSWORD CHECK a-z A-Z 0-9  @!:;,§/?*µ$=+
 $char = "abcdefghijklmnopqrstuvwyxz0123456789@!:;,§/?*µ$=+";
 $nb_char = 6;
-$password = $_POST['password'];
+$password = $_POST['motDePasse'];
+
 
 if (strlen($password) < $nb_char) {
     echo "Mot de passe trop court !";
@@ -37,15 +38,11 @@ if (strlen($password) < $nb_char) {
 
 if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)) {
     echo 'Mot de passe conforme';
-}
-
-else {
-    echo 'Mot de passe non conforme';
+} else {
+    header('Location: ../connexion.php#tologin');
 }	
 
 
-
-var_dump($_POST);
 /*
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
