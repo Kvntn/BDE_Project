@@ -55,11 +55,3 @@
     include("footer.php");
     include("aside.php");
 ?>
-
-
-
-<form action="" method="get">
-  <button name = "button" type="submit" value="previous">previous</button>
-  <br>
-  <button name = "button" type="submit" value="next">next</button>
-</form> 
