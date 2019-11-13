@@ -3,7 +3,6 @@
     include("head.php");
     include("nav.php");
     include("footer.php");
-    include("aside.php");
 ?>
 <div class="container-cart">
 <div class="pb-5">

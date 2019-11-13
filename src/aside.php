@@ -1,5 +1,6 @@
    <?php
         include("head.php");
+        include("search.php");
     ?>
 
 <div class="container-side">
@@ -7,5 +8,9 @@
     <?php
       include("search.php");
     ?>
+    <div class="row">
+      <img src="./resources/images/hoodie_png.png" alt="">
+    </div>
+
   </div>
 </div>
