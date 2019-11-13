@@ -5,10 +5,8 @@
   session_start();
   include("head.php");
   include("nav.php");
-  include("aside.php"); 
   echo "<br><br><br>";
 
-  var_dump($_SESSION);
 ?>
 <body>
 
@@ -16,7 +14,7 @@
   <div class="container">
     <div class="animate form">
       <div id="wrapper">
-        <form  method="post" action="./db_related/scriptProfile_Update.php" autocomplete="on">
+        <form  method="post" action="./db_related/scriptProfile_Update.php" autocomplete="on" enctype="multipart/form-data">
           <h1> Modifiez votre profil ! </h1>
           <p>
               <label for="passwordsignup" class="youpasswd"  >Vote ancien mot de passe : *</label>
@@ -41,10 +39,14 @@
               </select>
           </p>
 
-          <p>
+          <!--<p>
               <label for="Photo" class="uname"  >Photo : </label>
               <input id="Photosignup" name="Photo" type="text" placeholder="Changez de photo !" />
-          </p>
+          </p>-->
+          <p>
+            <label> Mettre une photo de profil :</label>
+            <input type="file" name="Photo"/>
+          </p> 
 
           <p>
               <label for="Centre" class="uname" >Votre centre : *</label>
@@ -67,11 +69,14 @@
           <p class="signin button">
               <input type="submit" value="Valider !"/>
           </p>
+          <br>
+          <br>
 
         </form>
       </div>
     </div>
   </div>
+  <br><br><br>
 </div>
 
 
@@ -80,4 +85,3 @@
 <?php include("footer.php");?>
 
 </html>
-

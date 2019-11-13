@@ -10,18 +10,14 @@
 
 <?php 
     include("head.php");
+    
 ?>
 
     <body>
 
-    <!-- L'en-tête -->
-    <header>
-    <h1><strong>BDE</strong>Project</h1>
-    </header>
-
     <!-- Le corps -->
     <div id="corps">   
-
+        <br><br><br><br>
         <!-- Le menu -->
         <?php include("nav.php");
         $strEmail=isset($_COOKIE['email']) ? $_COOKIE['email'] : "";
@@ -37,11 +33,11 @@
                             <form method="post" action="./db_related/scriptConnexion.php" autocomplete="on">
                                 <h1>Connexion</h1>
                                 <p> 
-                                    <label for="email" class="uname"  > Email : </label>
+                                    <label for="email" class="field_c"  > Email : </label>
                                     <input id="email" name="email" required="required" type="text" placeholder="Email" value="<?php print($strEmail); ?>" />
                                 </p>
                                 <p> 
-                                    <label for="password" class="youpasswd" > Mot de passe : </label>
+                                    <label for="password" class="field_c" > Mot de passe : </label>
                                     <input id="password" name="motDePasse" required="required" type="password" placeholder="motdepasse" value="<?php print($strPw); ?>" />
                                 </p>
 
@@ -59,22 +55,22 @@
                             <form  method="post" action="./db_related/scriptInscription.php" autocomplete="on">
                                 <h1> Inscription </h1>
                                 <p>
-                                    <label for="email" class="uname"  >Email : *</label>
+                                    <label for="email" class="field_c"  >Email : *</label>
                                     <input id="emailsignup" name="email" required="required" type="text" placeholder="Entrez votre adresse mail @viacesi.fr" />
                                 </p>
 
                                 <p>
-                                    <label for="passwordsignup" class="youpasswd"  >Mot de passe : *</label>
-                                    <input id="passwordsignup" name="motDePasse" required="required" type="password" placeholder="Saisissez un mot de passe"/>
+                                    <label for="passwordsignup" class="field_c"  >Mot de passe : <small>(6 caractères, 1 majuscule, 1 chiffre, 1 symbole minimum)</small></label>
+                                    <input id="passwordsignup" pattern=".{6,}" name="motDePasse" required="required" type="password" placeholder="Saisissez un mot de passe"/>
                                 </p>
 
                                 <p>
-                                    <label for="passwordsignup" class="youpasswd"  >Réécrivez votre mot de passe : *</label>
+                                    <label for="passwordsignup" class="field_c"  >Réécrivez votre mot de passe : *</label>
                                     <input id="passwordsignup" name = "confirmPassword" required="required" type="password" placeholder="Saisissez un mot de passe"/>
                                 </p>
 
                                 <p>
-                                    <label for="Statut" class="uname"  >Votre statut a sein de l'école : *</label>
+                                    <label for="Statut" class="field_c"  >Votre statut a sein de l'école : *</label>
                                     <select name="stat"  class=form-control>
                                         <option value=0>Etudiant</option>
                                         <option value=1>Membre du BDE</option>
@@ -82,13 +78,13 @@
                                     </select>
                                 </p>
 
-                                <p>
+                                <!--<p>
                                     <label for="Photo" class="uname"  >Photo : </label>
                                     <input id="Photosignup" name="Photo" type="text" placeholder="Lien vers votre photo de profil" />
-                                </p>
+                                </p>-->
 
                                 <p>
-                                    <label for="Centre" class="uname" >Votre centre : *</label>
+                                    <label for="Centre" class="field_c" >Votre centre : *</label>
                                     <select  name="centre" >
                                         <option value=1>Nanterre</option>
                                         <option value=2>Orléans</option>
@@ -106,7 +102,7 @@
                                 </p>
 
                                 <p>
-                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "mention.php"> conditions d'utilisation </a>
+                                    <input type='checkbox' name='case' required="required" value='on'>  Accepter les <a href= "legalnotice.php"> conditions d'utilisation </a>
                                 </p>
 
                                 <p class="signin button">
@@ -120,10 +116,14 @@
                         </div>
                     </div>
                 </div>
+                <br><br><br><br><br><br><br><br><br>
             </section>
-           <br><br><br><br><br><br><br><br>
-           <p><i>* : champs obligatoires </i></p>
+            <br><br><br><br><br><br><br><br><br>
         </div>
     </div>
     </body>
+    
+    <?php 
+    include("footer.php");
+    ?>
 </html>

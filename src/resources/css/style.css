@@ -1,7 +1,6 @@
 
 .footer {
   margin-top: 50%;
-  position: fixed;
   left: 0;
   bottom: 0;
   height: 45px;
@@ -14,25 +13,93 @@
   color : whitesmoke;
   font-size: 30px;
   content: black;
+
 }
 
-.blog-sidebar {
-  margin-top:40px;
-  background-color: #343a40;
-  margin-bottom: 35px;
+.faceI i:hover{
+  color:#3b5998;
 }
 
-.blog-sidebar a {
-  color: whitesmoke;
- }
+.twiI i:hover {
+  color:#1da1f2;
+}
+
+.instaI i:hover {
+  color:#e1306c;
+}
 
 .container-shop {
+  margin-top: 35px;
   padding:20px;
-  padding-right:250px;
+  padding-left:300px;
+  overflow-x: hidden;
 }
 
 .legal-container {
   margin-top:43px;
   padding:15px;
-  padding-right:40px;
+  margin-left: 280px;
+  margin-bottom:35px;
+}
+
+.sidenav {
+  height: 88%;
+  width: 270px;
+  position: fixed;
+  z-index: 6;
+  top: 50px;
+  left: 0;
+  background-color: #343a40;
+  overflow-x: hidden;
+  padding-top: 35px;
+}
+
+.sidenav a, form{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.container-side {
+  padding-top:25px;
+}
+
+.dropdown-menu a{
+  color:black;
+}
+
+.field_c{
+  font-size: 20px;
+}
+
+@media (max-width: 700px) {
+  .container-side {
+    display: none;
+    padding-top:25px;
+  }
+
+  .legal-container {
+    margin-top:43px;
+    padding:15px;
+    margin-left: 20px;
+    margin-bottom:35px;
+  }
+
+  .container-shop {
+    padding:20px;
+    padding-left:20px;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 700px) {
+  .navbar form {
+    display: none;
+  }
 }
