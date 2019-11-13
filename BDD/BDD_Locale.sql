@@ -11,13 +11,9 @@ CREATE TABLE Utilisateurs(
         IDUtilisateur Int  Auto_increment  NOT NULL ,
         Email         Varchar (255) NOT NULL ,
         MotDePasse    Varchar (255) NOT NULL ,
-<<<<<<< HEAD
-        Satus         Int NOT NULL ,
-        PhotoDeProfil Varchar (255) NOT NULL
-=======
+        PhotoDeProfil Varchar (255) NOT NULL,
         Statut         Int NOT NULL ,
-	IDPanier	Int NOT NULL -
->>>>>>> 99c2e6fe025170e3d33585f347f1c565eec25350
+	IDPanier	Int NOT NULL
 	,CONSTRAINT Utilisateurs_PK PRIMARY KEY (IDUtilisateur)
 )ENGINE=InnoDB;
 
