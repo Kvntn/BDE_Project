@@ -13,25 +13,20 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     MotDePasse: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    PhotoDeProfil: {
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     Statut: {
       type: DataTypes.INTEGER(11),
       allowNull: false
     },
-    PhotoDeProfil: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
     IDPanier: {
       type: DataTypes.INTEGER(11),
-      allowNull: true,
-      references: {
-        model: 'panier',
-        key: 'IDPanier'
-      },
-      unique: true
+      allowNull: false
     }
   }, {
     tableName: 'utilisateurs'
