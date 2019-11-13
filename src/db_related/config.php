@@ -2,7 +2,7 @@
   require_once 'pdo_loc.php';
   require_once 'pdo_nat.php';
 
-  db_national::setConfig('mysql:host=localhost;dbname=bde_nationale;', 'root', '');
-  db_local::setConfig('mysql:host=localhost;dbname=bde_locale;', 'root', '');
+  db_national::setConfig('mysql:host=localhost;dbname=bde_national;', 'root', '');
+  db_local::setConfig('mysql:host=localhost;dbname=bde_local;', 'root', '');
 
 ?>

@@ -2,19 +2,19 @@
     include("head.php");
     include("nav.php");
     include("footer.php");
-    include("aside.php")
+    include("aside.php");
 ?>
 
 <div class="container-prod">
     <div class="row">
 
-    <div class="img-prod">
-        <div class="card-body-img">
+    <div class="col-sm-6 img-prod">
+        <div class="card-body">
             <img class="max-width"  src="./resources/images/hoodie_png.png">
         </div>
     </div>
 
-    <div class="desc-prod">
+    <div class="col-sm-6 desc-prod">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Black hoodie</h5>
@@ -35,7 +35,3 @@
             </ul>
         </div>
     </div>
-
-    </div>
-</div>
-
