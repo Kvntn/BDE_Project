@@ -1,4 +1,3 @@
-
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="index.php">B.D.E.</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
@@ -46,18 +45,13 @@
       </li>
     </ul>
 
-    <div class="autocomplete">
-       <form class="form-inline my-2 my-lg-0" autocomplete="off" action="/action_page.php">
-           <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" id="myInput" type="text" name="myCountry">
-           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
-       </form>
-    </div>
+    <?php
+      include("search.php");
+    ?>
     
   </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<script src="resources/js/autocomplete/autocomplete-0.3.0.js"></script>
-<script src="resources/js/javascript.js"></script>
 </nav>
