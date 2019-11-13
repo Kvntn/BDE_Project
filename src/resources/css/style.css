@@ -97,6 +97,16 @@
     overflow-x: hidden;
   }
 
+  .container-cart {
+    margin-left: 10px;
+    margin-top: 0px;
+    overflow-x: hidden;
+  }
+  
+  .button-purchase {
+    margin-left:40%;
+  }
+
 }
 
 @media (min-width: 700px) {
@@ -111,6 +121,17 @@
   margin-bottom:50px;
   margin-left: 250px;
 }
+
+.container-cart {
+  margin-left: 260px;
+  margin-top: 0px;
+  overflow-x: hidden;
+}
+
+.button-purchase {
+  margin-left:40%;
+}
+
 
 
 
