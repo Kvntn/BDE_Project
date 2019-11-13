@@ -6,8 +6,10 @@
   <div class="album py-5 bg-light">
     <div class="container-shop">
     <form action="" method="get">
-    <button name = "button" type="submit" value="previous">previous</button>
-    <button name="button" type="submit" value="next">next</button>
+    <div class="prevnex">
+      <button name="button" class="btn btn-dark" type="submit" value="previous">previous</button>
+      <button name="button" class="btn btn-dark" type="submit" value="next">next</button>
+    </div>
   </form> 
     <div class="row">
           <?php
@@ -53,8 +55,12 @@
     include("head.php");
     include("nav.php");
     include("footer.php");
-    include("aside.php");
 ?>
 
 
 
+<form action="" method="get">
+  <button name = "button" type="submit" value="previous">previous</button>
+  <br>
+  <button name = "button" type="submit" value="next">next</button>
+</form> 
