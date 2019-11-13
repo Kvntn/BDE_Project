@@ -11,7 +11,7 @@ CREATE TABLE Utilisateurs(
         IDUtilisateur Int  Auto_increment  NOT NULL ,
         Email         Varchar (255) NOT NULL ,
         MotDePasse    Varchar (255) NOT NULL ,
-        Satut         Int NOT NULL ,
+        Satus         Int NOT NULL ,
         PhotoDeProfil Varchar (255) NOT NULL
 	,CONSTRAINT Utilisateurs_PK PRIMARY KEY (IDUtilisateur)
 )ENGINE=InnoDB;
@@ -100,8 +100,13 @@ CREATE TABLE LikesCommentaires(
 #------------------------------------------------------------
 
 CREATE TABLE LikesEvenements(
-        IDLike Int  Auto_increment  NOT NULL
+        IDLike        Int  Auto_increment  NOT NULL ,
+        IDUtilisateur Int NOT NULL ,
+        IDEvenement   Int NOT NULL
 	,CONSTRAINT LikesEvenements_PK PRIMARY KEY (IDLike)
+
+	,CONSTRAINT LikesEvenements_Utilisateurs_FK FOREIGN KEY (IDUtilisateur) REFERENCES Utilisateurs(IDUtilisateur)
+	,CONSTRAINT LikesEvenements_Evenements0_FK FOREIGN KEY (IDEvenement) REFERENCES Evenements(IDEvenement)
 )ENGINE=InnoDB;
 
 
@@ -154,30 +159,17 @@ CREATE TABLE Produits(
 
 
 #------------------------------------------------------------
-# Table: LikerEvenements
+# Table: ListeProduits
 #------------------------------------------------------------
 
-CREATE TABLE LikerEvenements(
-        IDLike        Int NOT NULL ,
-        IDUtilisateur Int NOT NULL
-	,CONSTRAINT LikerEvenements_PK PRIMARY KEY (IDLike,IDUtilisateur)
-
-	,CONSTRAINT LikerEvenements_LikesEvenements_FK FOREIGN KEY (IDLike) REFERENCES LikesEvenements(IDLike)
-	,CONSTRAINT LikerEvenements_Utilisateurs0_FK FOREIGN KEY (IDUtilisateur) REFERENCES Utilisateurs(IDUtilisateur)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: ContenirLikes
-#------------------------------------------------------------
-
-CREATE TABLE ContenirLikes(
-        IDLike      Int NOT NULL ,
-        IDEvenement Int NOT NULL
-	,CONSTRAINT ContenirLikes_PK PRIMARY KEY (IDLike,IDEvenement)
-
-	,CONSTRAINT ContenirLikes_LikesEvenements_FK FOREIGN KEY (IDLike) REFERENCES LikesEvenements(IDLike)
-	,CONSTRAINT ContenirLikes_Evenements0_FK FOREIGN KEY (IDEvenement) REFERENCES Evenements(IDEvenement)
+CREATE TABLE ListeProduits(
+        IDProduit   Int  Auto_increment  NOT NULL ,
+        NomProduit  Varchar (50) NOT NULL ,
+        Description Text NOT NULL ,
+        Prix        DECIMAL (15,3)  NOT NULL ,
+        Photo       Text NOT NULL ,
+        Categorie   Varchar (50) NOT NULL
+	,CONSTRAINT ListeProduits_PK PRIMARY KEY (IDProduit)
 )ENGINE=InnoDB;
 
 
