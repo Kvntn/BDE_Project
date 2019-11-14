@@ -43,7 +43,7 @@ if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)) {
 }	
 
 
-/*
+
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
     sleep(3);
@@ -116,7 +116,7 @@ if($_POST['centre'] != 1)
 
 $bdd = db_local::getInstance();
 
-$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur,Email, MotDePasse, Statut, PhotoDeProfil) 
+$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Email, MotDePasse, Statut, PhotoDeProfil) 
                         VALUES (null,:email,:mdp,:stat, :pdp)");
 
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
@@ -138,6 +138,6 @@ $requete->closeCursor();
 
 
  header("Location: ../connexion.php#tologin");
-*/
+
 ?>
 

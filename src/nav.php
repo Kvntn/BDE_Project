@@ -1,5 +1,9 @@
+<?php
+  include("head.php");
+?>
+
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="index.php">BDE</a>
+  <a class="navbar-brand" href="index.php"><i class="fas fa-graduation-cap fa-lg"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,11 +21,11 @@
     <ul class="navbar-nav ml-auto nav-flex-icons">
 
       <li class="nav-item">
-        <a class="nav-link" aria-haspopup="true" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
+        <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
       </li>
       
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user fa-lg"></i>
         </a>
@@ -44,15 +48,23 @@
                     <a class=\"dropdown-item\" href=\"connexion.php#toregister\">Inscription</a>
                     <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
                 }
+                
+                if(@$_SESSION['Statut'] == 2) {
+                  echo "
+                  <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un produit</a>
+                  <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un évènement</a>";
+                }
+                
             ?>
         </div>
       </li>
 
-    </ul>
+<?php
+  include("search.php");
+  include("head.php");
+?>
 
-    <?php
-      include("search.php");
-    ?>
+    </ul>
     
   </div>
 
