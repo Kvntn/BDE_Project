@@ -35,6 +35,12 @@
         <p class="card-text texte-left">Venez profiter d'un merveilleux weekend en compagnie de vos futur colègues.<p class="text-right">
           <input class="btn btn-outline-warning" type="submit" value="Intéressé">
           <input class="btn btn-outline-danger" type="submit" value="Signaler">
+          <?php
+            if(@$_SESSION['Statut'] == 2) {
+              echo '
+              <a class="btn btn-outline-info" href="#" role="button">Acceder à la liste des participant</a>';
+            }
+          ?>
         </p>
       </div>
 

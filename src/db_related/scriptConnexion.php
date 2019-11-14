@@ -33,7 +33,7 @@ if ($arr != NULL) {
 
         $tmp[0] = ucfirst($tmp[0]);
         $tmp[1] = ucfirst($tmp[1]);
-        $_SESSION = $_POST;
+        $_SESSION = $arr[0];
         $_SESSION['login'] = true;
 
         echo "Logged in as $tmp[1] $tmp[0] !";
@@ -42,8 +42,10 @@ if ($arr != NULL) {
         @setcookie('name', $tmp[1], time() + 365*24*3600, "/", null, false, true); 
         setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
         setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true); 
+        setcookie('statut', $_SESSION['statut'], time() + 365*24*3600, "/", null, false, true);
 
-        
+        var_dump($_COOKIE);
+        var_dump($_SESSION);
         header('Location: ../index.php');
 }else{
     echo '<h2>Unknown login ! Try again, you entered : '.$email.'</h2>';
