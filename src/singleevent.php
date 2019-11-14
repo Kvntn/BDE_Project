@@ -34,11 +34,11 @@
         <h5 class="card-title">Week-End d'intégration <small class="text-right">Payant</small></h5>
         <p class="card-text texte-left">Venez profiter d'un merveilleux weekend en compagnie de vos futur colègues.<p class="text-right">
           <input class="btn btn-outline-warning" type="submit" value="Intéressé">
-          <input class="btn btn-outline-danger" type="submit" value="Signaler">
           <?php
             if(@$_SESSION['Statut'] == 2) {
               echo '
-              <a class="btn btn-outline-info" href="#" role="button">Acceder à la liste des participant</a>';
+              <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participant</a>
+              <input class="btn btn-outline-danger" type="submit" value="Signaler">';
             }
           ?>
         </p>
