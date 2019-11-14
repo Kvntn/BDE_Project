@@ -5,12 +5,10 @@
 <body>
   <div class="album py-5 bg-light">
     <div class="container-shop">
-    <form action="" method="get">
-    <div class="prevnex">
-      <button name="button" class="btn btn-dark" type="submit" value="previous">previous</button>
-      <button name="button" class="btn btn-dark" type="submit" value="next">next</button>
-    </div>
-  </form> 
+      <form action="" class="text-justify" method="get">
+        <button name="button" class="btn btn-dark" type="submit" value="previous"><i class="fas fa-arrow-left"></i></button>
+        <button name="button" class="btn btn-dark" type="submit" value="next"><i class="fas fa-arrow-right"></i></button>
+      </form> 
     <div class="row">
           <?php
           
@@ -45,6 +43,10 @@
           $products->display($listproducts);
           ?>
     </div>
+      <form action="" class="text-justify" method="get">
+          <button name="button" class="btn btn-dark" type="submit" value="previous"><i class="fas fa-arrow-left"></i></button>
+          <button name="button" class="btn btn-dark" type="submit" value="next"><i class="fas fa-arrow-right"></i></button>
+      </form>
   </div>
   </div>
     
@@ -56,11 +58,3 @@
     include("nav.php");
     include("footer.php");
 ?>
-
-
-
-<form action="" method="get">
-  <button name = "button" type="submit" value="previous">previous</button>
-  <br>
-  <button name = "button" type="submit" value="next">next</button>
-</form> 
