@@ -37,7 +37,7 @@
           <?php
             if(@$_SESSION['Statut'] == 2) {
               echo '
-              <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participant</a>
+              <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
               <input class="btn btn-outline-danger" type="submit" value="Signaler">';
             }
           ?>
