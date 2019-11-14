@@ -137,4 +137,18 @@
   margin-left:15px;
 }
 
+.container-singleevent {
+  padding:20px;
+  margin-top:70px;
+  margin-bottom:50px;
+  margin-left:15px;
+}
+
+.container-singleevent a {
+  color:gray;
+}
+
+.container-singleevent a:hover {
+  color:white;
+}
 

@@ -17,11 +17,11 @@
     <ul class="navbar-nav ml-auto nav-flex-icons">
 
       <li class="nav-item">
-        <a class="nav-link" aria-haspopup="true" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
+        <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
       </li>
       
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user fa-lg"></i>
         </a>
