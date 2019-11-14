@@ -15,7 +15,7 @@
     <div class="animate form">
       <div id="wrapper">
         <form  method="post" action="./db_related/scriptProfile_Update.php" autocomplete="on" enctype="multipart/form-data">
-          <h1> Modifiez votre profil ! </h1>
+          <h1>Modifiez votre profil</h1>
           <p>
               <label for="passwordsignup" class="youpasswd"  >Vote ancien mot de passe : *</label>
               <input id="passwordsignup" name="pw" required="required" type="password" placeholder="Saisissez votre ancien mot de passe"/>

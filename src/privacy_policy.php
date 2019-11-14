@@ -4,8 +4,9 @@
 include("head.php");
 include("nav.php");
 include("footer.php");
-include("aside.php");
 ?>
+
+<div class="container-private_policy">
 
 <div class="privacy_policy">
 <section class="mainSection"><div class="kicker">
@@ -215,6 +216,7 @@ Différents types de cookies sont utilisés sur notre Site :
             </p>
             </section>
             </div>
+</div>
 <br>
 <br>
 </html>
