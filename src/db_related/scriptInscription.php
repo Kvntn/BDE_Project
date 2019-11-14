@@ -70,10 +70,9 @@ $bdd = db_national::getInstance();
 $_POST['stat'] = (int)$_POST['stat'];
 $_POST['centre'] = (int)$_POST['centre'];
 
-
 //The following part verifies the existence of an already existing account with the entered mail.
 
-$requete = $bdd->prepare("SELECT * FROM utilisateurs WHERE email=:email AND MotDePasse=:mdp");
+$requete = $bdd->prepare("SELECT * FROM utilisateurs WHERE Email=:email AND MotDePasse=:mdp");
 
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);

@@ -43,6 +43,12 @@ if ($arr != NULL) {
         setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
         setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true); 
 
+        $bdd = db_local::getInstance();
+
+        $requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = $_COOKIE["firstname"], Nom = $_COOKIE["name"] WHERE Email=$email');
+        $requete->execute();
+        $requete->closeCursor();
+
         
         header('Location: ../index.php');
 }else{
