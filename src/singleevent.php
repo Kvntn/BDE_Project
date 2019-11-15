@@ -15,8 +15,9 @@ if (!isset($_SESSION)){
       }
 
     if(isset($_GET['id'])) {
-      $id = $_GET['id'];
+      $_SESSION['IDEvenement'] = $_GET['id'];
     }
+    $id = $_SESSION['IDEvenement'];
     $bdd = db_local::getInstance();
 
     $requete = $bdd->prepare("SELECT * FROM evenements WHERE IDEvenement = $id");
@@ -67,7 +68,7 @@ if (!isset($_SESSION)){
           </button>
           <input class="btn btn-outline-warning" type="submit" value="Intéressé">
           <?php
-            if(@$_SESSION['Statut'] == 2) {
+            if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
               echo '
               <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
               <input class="btn btn-outline-danger" type="submit" value="Signaler">';

@@ -1,7 +1,9 @@
 <?php  
     if (!isset($_SESSION)){
     session_start();
+    
 }
+    $_SESSION['cart'] = array();
     include("head.php");
     require('./db_related/pdo_loc.php');
     try{
@@ -18,14 +20,17 @@
     $produit['Quantite'] = $_POST['quantity'];
     $produit['PrixTotal'] = $produit['Quantite']*$produit['Prix'];
     array_push($_SESSION['cart'],$produit);
+    
     }
 ?>
+
 <div class="container-cart">
 <div class="pb-5">
     
       <div class="row">
+      <?php var_dump($_SESSION['cart']); 
+      ?>
         <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-        <?php var_dump($_SESSION['cart']); ?>
           <!-- Shopping cart table -->
           <div class="table-responsive">
             <table class="table">
@@ -48,20 +53,13 @@
 
               <tbody>
 
-                <tr>
-                  <th scope="row" class="border-0">
-                    <div class="p-2">
-                      <img src="./resources/images/hoodie_png.png" alt=""  style="max-width:70px; max-height:70px;" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"></a></h5>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="border-0 align-middle"><strong><?php echo $_SESSION['cart'][0]['NomProduit']?></strong></td>
-                  <td class="border-0 align-middle"><strong><?php echo $_SESSION['cart'][0]['Prix']?></strong></td>
-                  <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                </tr>
-
+                
+                <?php 
+                include('./cartDisplay.php');
+                $cart = $_SESSION['cart'];
+                $cartDisplay = new Cart($cart);
+                $cartDisplay->display($cart);
+                ?>
                 
 
               </tbody>
