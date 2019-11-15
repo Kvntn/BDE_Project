@@ -35,14 +35,14 @@ if (strlen($_POST['motDePasse']) < $nb_char) {
 if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $_POST['motDePasse'])) {
     echo 'Mot de passe conforme';
 } else {
-    header('Location: ../connexion.php#tologin');
+    echo '<script> document.location.replace("../connexion.php#tologin"); </script>';
 }	
 
 
 
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
-    header("Location: ../connexion.php#toregister");
+    echo '<script> document.location.replace("../connexion.php#toregister"); </script>';
 }
     
 $_POST['motDePasse'] = md5($_POST['motDePasse']);
@@ -50,7 +50,7 @@ $_POST['motDePasse'] = md5($_POST['motDePasse']);
 
 if(!endsWith($_POST['email'], '@viacesi.fr')) {
     echo "<h1>Votre adresse mail n'appartient pas au CESI.</h1>";
-    header("Location: ../connexion.php#toregister");
+    echo '<script> document.location.replace("../connexion.php#toregister"); </script>';
 }
 
 if(!isset($_POST['Photo'])) {
@@ -126,5 +126,5 @@ $requete = $bdd->prepare("UPDATE panier SET IDutilisateur = (SELECT IDPanier FRO
 $requete->execute();
 $requete->closeCursor();
 
-//echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
+echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
 ?>
