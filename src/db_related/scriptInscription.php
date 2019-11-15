@@ -46,7 +46,6 @@ if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)) {
 
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
-    sleep(3);
     header("Location: ../connexion.php#toregister");
 }
     
@@ -55,12 +54,11 @@ $_POST['motDePasse'] = md5($_POST['motDePasse']);
 
 if(!endsWith($_POST['email'], '@viacesi.fr')) {
     echo "<h1>Votre adresse mail n'appartient pas au CESI.</h1>";
-    sleep(3);
     header("Location: ../connexion.php#toregister");
 }
 
 if(!isset($_POST['Photo'])) {
-    $_POST = null;
+    $_POST['Photo'] = null;
 }
 
 
@@ -83,8 +81,7 @@ $requete->closeCursor();
 
 if($arr != NULL) {
     echo "L'email de cet utilisateur existe déjà";
-    sleep(3);
-    header("Location: ../connexion.php#toregister");
+    echo '<script> document.location.replace("../connexion.php#toregister"); </script>'; 
 }
     
 
@@ -110,7 +107,7 @@ $requete->closeCursor();
 
 
 if($_POST['centre'] != 1)
-     header("Location: ../connexion.php#tologin");
+    echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
 
 
 $bdd = db_local::getInstance();
@@ -135,8 +132,6 @@ $requete = $bdd->prepare("UPDATE panier SET IDutilisateur = (SELECT IDPanier FRO
 $requete->execute();
 $requete->closeCursor();
 
-
- header("Location: ../connexion.php#tologin");
-
+echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
 ?>
 

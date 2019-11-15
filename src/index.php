@@ -1,8 +1,13 @@
+<?php 
+if (!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
-  <?php  
-    session_start();
+  <?php
     include("head.php");
     include("nav.php");
     include("footer.php");

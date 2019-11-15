@@ -1,3 +1,8 @@
+<?php if (!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <footer>
     <?php 
     include("head.php");

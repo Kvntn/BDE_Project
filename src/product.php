@@ -1,8 +1,12 @@
 <?php
+
+if (!isset($_SESSION)){
+    session_start();
+}
+
     include("head.php");
     include("nav.php");
     include("footer.php");
-    include("aside.php");
 
     require('./db_related/pdo_loc.php');
         try{
