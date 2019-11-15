@@ -52,7 +52,7 @@
                     <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
                 }
                 
-                if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+                if(@$_SESSION['Statut'] == 1) {
                   echo "
                   <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
                   <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";
