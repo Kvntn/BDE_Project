@@ -79,15 +79,21 @@ if (!isset($_SESSION)){
 
       <div class="tab-pane" id="p2">
 
-        <div class="list-group-item list-group-item flex-column align-items-start text-left">
-          <div class="inline"> 
-          <h4><img class="text-right rounded" src="./resources/images/Photo_Profil/thomas.lima@viacesi.fr.jpg" style="max-width: 20px; height:20px;" alt="">      Thomas Lima</h4>
-          </div>
-          <p>Wow super weekend, surtout quand on peu pas y aller psq on est en deuxieme année</p>
-          <button type="button" class="btn btn-default btn-lg">
-          <span class="badge badge-light">0         <i class="fas fa-heart"></i></span>
-          </button>
-        </div>
+      <?php
+          require('./comDisplay.php');
+          try{
+              require("./db_related/config.php");
+          }catch(Exception $e) {
+              throw new Exception("No config ! Incorrect file path or the file is corrupted");
+          }
+          $bdd = db_local::getInstance();
+          $idevent = $_SESSION['IDEvenement'];
+          $requete = $bdd->prepare("SELECT * from commentairesevenements WHERE IDEvenement = $idevent");
+          $requete->execute();
+          $listcom = $requete->fetchAll();
+          $coms = new Commentaires($listcom);
+          $coms->display($listcom);
+      ?>
 
       </div>
 
@@ -95,19 +101,21 @@ if (!isset($_SESSION)){
        
       <div class="row">
 
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" style="max-width:1000px; max-height:600px;" src="./resources/images/CESI_campus" alt="Card image cap">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;">0      <i class="fas fa-heart"></i></button>
-                    </div>
-                    <small class="text-muted">Thomas Lima</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <?php
+          require('./imgDisplay.php');
+          try{
+              require("./db_related/config.php");
+          }catch(Exception $e) {
+              throw new Exception("No config ! Incorrect file path or the file is corrupted");
+          }
+          $bdd = db_local::getInstance();
+          $idevent = $_SESSION['IDEvenement'];
+          $requete = $bdd->prepare("SELECT * from photos WHERE IDEvenement = $idevent");
+          $requete->execute();
+          $listimg = $requete->fetchAll();
+          $coms = new Image($listimg);
+          $coms->display($listimg);
+      ?>
             
       </div>
       </div>
@@ -127,13 +135,13 @@ if (!isset($_SESSION)){
       </div>
 
       <div class="card-body tab-pane" id="p5">
-      <form class="form" method="post" action="post_com.php">
+      <form class="form" method="post" action="post_img.php">
 
-        <p>
-            <label> Ajouter une photo :</label>
-            <input type="file" name="photo-prod"/>
-        </p>
-        <br>
+        <div class="form-label-group">
+            <label>Photo</label>
+            <input type="post" name="name_img" class="form-control" placeholder="Veuillez inserer un lien provenant d'un navigateur." required>
+        </div>
+          <br>
 
         <button class="btn btn-secondary" name="add_com" type="submit">Ajouter la photo</button>
 

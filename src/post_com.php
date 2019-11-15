@@ -15,13 +15,13 @@ if (!isset($_SESSION)){
 //   $idutilisateur = $_SESSION['IDutilisateur'];
 
   $bdd = db_local::getInstance();
-
-  $requete = $bdd->prepare("INSERT INTO commentairesevenements(IDCommentaire, ContenuCommentaire ,IDEvenement,IDUtilisateur) 
-                          VALUES (null,:contenu,:IDEvent,:IDUser)");
+    var_dump($_SESSION);
+  $requete = $bdd->prepare("INSERT INTO commentairesevenements(ContenuCommentaire ,IDEvenement,IDUtilisateur) 
+                          VALUES (:contenu,:IDEvent,:IDUser)");
 
     $requete->bindValue(':contenu', $_POST['name_com'], PDO::PARAM_STR);
-    $requete->bindValue(':IDEvent', $_SESSION['IDEvenement'], PDO::PARAM_INT);
-    $requete->bindValue(':IDUser', $_SESSION['IDUtilisateur'], PDO::PARAM_INT);
+    $requete->bindValue(':IDEvent', $_SESSION['IDEvenement'], PDO::PARAM_STR);
+    $requete->bindValue(':IDUser', '1', PDO::PARAM_STR);
 
     $requete->execute();
     $requete->closeCursor();
