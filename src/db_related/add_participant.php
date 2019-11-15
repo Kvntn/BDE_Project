@@ -17,10 +17,8 @@ $requete=$bdd->prepare("INSERT INTO inscrire (IDUtilisateur, IDEvenement) VALUES
 $requete->execute();
 $requete->closeCursor();
 
-header("Location: ../singleevent.php");
+echo "<script>alert(\"Vous êtes inscrit à l'evenement\");history.go(-1);</script>";
 }catch(Exception $e){
-    echo "<script>alert(\"Vous êtes déja inscrit a l'evenement\");history.go(-1);</script>";
+    echo "<script>alert(\"Vous êtes déja inscrit à l'evenement !\");history.go(-1);</script>";
 }
-
-
 ?>

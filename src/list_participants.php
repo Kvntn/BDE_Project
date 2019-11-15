@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Prénom</th>
+                <th>Prenom</th>
             </tr>
         </thead>
 
@@ -32,7 +32,7 @@
 
           $bdd = db_local::getInstance();
 
-          $requete = $bdd->prepare("SELECT * FROM utilisateurs INNER JOIN inscrire ON utilisateurs.IDUtilisateur = inscrire.IDUtilisateur WHERE IDevenement = 1");
+          $requete = $bdd->prepare("SELECT Prenom, Nom FROM utilisateurs INNER JOIN inscrire ON utilisateurs.IDutilisateur = inscrire.IDutilisateur WHERE IDevenement = 1");
           $requete->execute();
           $listPart = $requete->fetchAll();
           $events = new Participant($listPart);
