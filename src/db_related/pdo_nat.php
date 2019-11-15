@@ -1,4 +1,6 @@
 <?php
+
+
   final class db_national{
     private static $PDOInstance = null;
     private static $dsn         = null;
