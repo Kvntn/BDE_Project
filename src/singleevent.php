@@ -215,7 +215,7 @@ if (!isset($_SESSION)){
           </script>
           <p class="text-right">
             <?php
-              if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+              if(@$_SESSION['Statut'] == 1) {
                 echo '<a class="btn btn-outline-info" href="./db_related/dl_liste.php" role="button">Télécharger la liste des participants</a>';
               }
             ?>
