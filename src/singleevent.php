@@ -117,7 +117,7 @@ if (!isset($_SESSION)){
 
         <div class="form-label-group">
             <label>Commentaire</label>
-            <input type="get" name="name_com" class="form-control" required>
+            <input type="post" name="name_com" class="form-control" required>
         </div>
             <br>
 

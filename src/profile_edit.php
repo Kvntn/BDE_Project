@@ -33,14 +33,6 @@
               <input id="passwordsignup" name = "conf_newpw" required="required" type="password" placeholder="Saisissez-le à nouveau"/>
           </p>
 
-          <p>
-              <label for="Statut" class="uname"  >Avez-vous un nouveau statut a sein de l'école : *</label>
-              <select name="stat"  class=form-control>
-                  <option value=0>Etudiant</option>
-                  <option value=1>Membre du BDE</option>
-                  <option value=2>Personnel du CESI</option>
-              </select>
-          </p>
 
           <!--<p>
               <label for="Photo" class="uname"  >Photo : </label>

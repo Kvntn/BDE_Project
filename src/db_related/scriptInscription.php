@@ -22,21 +22,17 @@ try{
     throw new Exception("No config ! Incorrect file path or the file is corrupted");
 }
 
-
 include "../head.php";
 include "../nav.php";
 
-// PASSWORD CHECK a-z A-Z 0-9  @!:;,§/?*µ$=+
-$char = "abcdefghijklmnopqrstuvwyxz0123456789@!:;,§/?*µ$=+";
 $nb_char = 6;
-$password = $_POST['motDePasse'];
 
 
-if (strlen($password) < $nb_char) {
+if (strlen($_POST['motDePasse']) < $nb_char) {
     echo "Mot de passe trop court !";
 }
 
-if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)) {
+if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $_POST['motDePasse'])) {
     echo 'Mot de passe conforme';
 } else {
     header('Location: ../connexion.php#tologin');
@@ -69,7 +65,6 @@ $_POST['stat'] = (int)$_POST['stat'];
 $_POST['centre'] = (int)$_POST['centre'];
 
 //The following part verifies the existence of an already existing account with the entered mail.
-
 $requete = $bdd->prepare("SELECT * FROM utilisateurs WHERE Email=:email AND MotDePasse=:mdp");
 
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
@@ -86,7 +81,6 @@ if($arr != NULL) {
     
 
 //Writing in national databse
-
 $requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur,Email, MotDePasse, Statut, PhotoDeProfil, IDCentre) 
                           VALUES (null,:email,:mdp,:stat,:pdp,:centre) ");
 
@@ -112,16 +106,16 @@ if($_POST['centre'] != 1)
 
 $bdd = db_local::getInstance();
 
-$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Email, MotDePasse, Statut, PhotoDeProfil) 
-                        VALUES (null,:email,:mdp,:stat, :pdp)");
+$LocalRequest = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Email, MotDePasse, Statut, PhotoDeProfil) 
+                        VALUES (null,:email,:mdp,:stat,:pdp)");
 
-$requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-$requete->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
-$requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
-$requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
+$LocalRequest->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+$LocalRequest->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
+$LocalRequest->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
+$LocalRequest->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
 
-$requete->execute();
-$requete->closeCursor();
+$LocalRequest->execute();
+$LocalRequest->closeCursor();
 
 //Linking shopcart with user
 $requete = $bdd->prepare("UPDATE utilisateurs SET IDPanier = IDUtilisateur");
@@ -132,5 +126,16 @@ $requete = $bdd->prepare("UPDATE panier SET IDutilisateur = (SELECT IDPanier FRO
 $requete->execute();
 $requete->closeCursor();
 
-echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
-?>
+//echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
+
+ /*
+A AJOUTER
+
+        
+$bdd = db_local::getInstance();
+
+$requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = $_COOKIE["firstname"], Nom = $_COOKIE["name"] WHERE Email=$email');
+$requete->execute();
+$requete->closeCursor();
+*/
+
