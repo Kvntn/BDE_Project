@@ -19,7 +19,7 @@
 
     $bdd = db_local::getInstance();
 
-    $requete = $bdd->prepare("SELECT NomEvenement, Description, Prix FROM evenements");
+    $requete = $bdd->prepare("SELECT * FROM evenements ORDER BY Date DESC");
     $requete->execute();
     $listevents = $requete->fetchAll();
     $events = new Event($listevents);

@@ -16,6 +16,14 @@
 
 }
 
+.footer a {
+  color:white;
+}
+
+.footer a:hover {
+  color:gray;
+}
+
 .faceI i:hover{
   color:#3b5998;
 }
