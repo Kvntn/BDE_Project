@@ -1,4 +1,8 @@
-<?php  
+<?php
+if (!isset($_SESSION)){
+    session_start();
+}
+
     include("head.php");
     include("nav.php");
     include("footer.php");

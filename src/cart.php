@@ -1,7 +1,8 @@
 <?php  
+    if (!isset($_SESSION)){
+    session_start();
+}
     include("head.php");
-  
-    $_SESSION['cart'] = array();
     require('./db_related/pdo_loc.php');
     try{
         require("./db_related/config.php");
@@ -14,17 +15,17 @@
     $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit = $id");
     $requete->execute();
     $produit = $requete->fetch();
-    var_dump($produit);
+    $produit['Quantite'] = $_POST['quantity'];
+    $produit['PrixTotal'] = $produit['Quantite']*$produit['Prix'];
     array_push($_SESSION['cart'],$produit);
     }
-    var_dump($_SESSION['cart']);
 ?>
 <div class="container-cart">
 <div class="pb-5">
     
       <div class="row">
         <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-
+        <?php var_dump($_SESSION['cart']); ?>
           <!-- Shopping cart table -->
           <div class="table-responsive">
             <table class="table">
