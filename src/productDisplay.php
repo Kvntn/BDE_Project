@@ -1,5 +1,10 @@
 <?php
 
+if (!isset($_SESSION)){
+    session_start();
+}
+
+
 class Product
 {
 	private $listproducts;

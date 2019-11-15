@@ -1,6 +1,11 @@
+<?php if (!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <footer>
     <?php 
-    //include("head.php");
+    include("head.php");
     ?>
     <div class="footer fixed-bottom">
             <a class="footer-icon instaI" href="https://www.instagram.com/"> <i class="fab fa-instagram"></i></a>
