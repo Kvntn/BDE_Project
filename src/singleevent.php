@@ -8,7 +8,6 @@ if (!isset($_SESSION)){
     include("footer.php");
 
 
-      require('./db_related/pdo_loc.php');
       try{
           require("./db_related/config.php");
       }catch(Exception $e) {
@@ -46,6 +45,10 @@ if (!isset($_SESSION)){
         
         <li class="nav-item">
           <a class="nav-link" href="#p4" data-toggle="tab">Poster un commentaire</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#p5" data-toggle="tab">Poster une photo</a>
         </li>
 
       </ul>
@@ -95,7 +98,6 @@ if (!isset($_SESSION)){
               <div class="card mb-4 shadow-sm">
                 <img class="card-img-top" style="max-width:1000px; max-height:600px;" src="./resources/images/CESI_campus" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text">Campus CESI</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;">0      <i class="fas fa-heart"></i></button>
@@ -110,19 +112,29 @@ if (!isset($_SESSION)){
       </div>
 
       <div class="card-body tab-pane" id="p4">
-      <form class="form">
+      <form class="form" method="post" action="post_com.php">
 
         <div class="form-label-group">
             <label>Commentaire</label>
-            <input type="get" name="name_event" class="form-control" required>
+            <input type="get" name="name_com" class="form-control" required>
         </div>
             <br>
+
+        <button class="btn btn-secondary" name="add_com" type="submit">Ajouter le commentaire</button>
+
+      </form>
+      </div>
+
+      <div class="card-body tab-pane" id="p5">
+      <form class="form" method="post" action="post_com.php">
+
         <p>
             <label> Ajouter une photo :</label>
             <input type="file" name="photo-prod"/>
-        </p> 
+        </p>
+        <br>
 
-        <button class="btn btn-secondary" name="add_com"type="submit">Ajouter le commentaire</button>
+        <button class="btn btn-secondary" name="add_com" type="submit">Ajouter la photo</button>
 
       </form>
       </div>
