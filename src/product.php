@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 
-                <form action="cart.php" method="post">
+                <form action="cart.php?id=<?php echo $_GET['id'];?>" method="post">
                 <label for="quantity" style="width:80px; margin-left:20px;">Quantité</label>
                 <select name="quantity" class="form-control form-control" style="width:80px; margin-left:20px;" id="exampleFormControlSelect1">
                     <option value=1>1</option>
