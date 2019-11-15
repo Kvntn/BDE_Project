@@ -13,24 +13,31 @@
             <tr>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Centre</th>
             </tr>
         </thead>
+
         <tbody>
 
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-            </tr>
+        <?php
+          require('./listDisplay.php');
+                require('./db_related/pdo_loc.php');
+                try{
+                    require("./db_related/config.php");
+                }catch(Exception $e) {
+                    throw new Exception("No config ! Incorrect file path or the file is corrupted");
+                }
 
-            <tr>
-                <td>Piger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-            </tr>
+          $bdd = db_local::getInstance();
+
+          $requete = $bdd->prepare("SELECT * FROM utilisateurs INNER JOIN inscrire ON utilisateurs.IDUtilisateur = inscrire.IDUtilisateur WHERE IDevenement = 1");
+          $requete->execute();
+          $listPart = $requete->fetchAll();
+          $events = new Participant($listPart);
+          $events->display($listPart);
+        ?>
             
         </tbody>
+
     </table>
 	</div>
 </div>
