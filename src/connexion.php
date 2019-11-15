@@ -1,3 +1,9 @@
+<?php 
+if (!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 
 <!--####################################
@@ -52,25 +58,25 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  method="post" action="./db_related/scriptInscription.php" autocomplete="on">
+                            <form  method="POST" action="./db_related/scriptInscription.php" autocomplete="on">
                                 <h1> Inscription </h1>
                                 <p>
-                                    <label for="email" class="field_c"  >Email : *</label>
-                                    <input id="emailsignup" name="email" required="required" type="text" placeholder="Entrez votre adresse mail @viacesi.fr" />
+                                    <label for="email" class="field_c"  ><small>Email : *</small></label>
+                                    <input name="email" id="emailsignup" required="required" type="text" placeholder="Entrez votre adresse mail @viacesi.fr" />
                                 </p>
 
                                 <p>
-                                    <label for="passwordsignup" class="field_c"  >Mot de passe : <small>(6 caractères, 1 majuscule, 1 chiffre, 1 symbole minimum)</small></label>
-                                    <input id="passwordsignup" pattern=".{6,}" name="motDePasse" required="required" type="password" placeholder="Saisissez un mot de passe"/>
+                                    <label for="motDePasse" class="field_c"  ><small>Mot de passe : (6 caractères, 1 majuscule, 1 chiffre, 1 symbole minimum)</small></label>
+                                    <input name="motDePasse" id="passwordsignup" required="required" type="password" placeholder="Saisissez un mot de passe"/>
                                 </p>
 
                                 <p>
-                                    <label for="passwordsignup" class="field_c"  >Réécrivez votre mot de passe : *</label>
-                                    <input id="passwordsignup" name = "confirmPassword" required="required" type="password" placeholder="Saisissez un mot de passe"/>
+                                    <label for="confirmPassword" class="field_c"  >Réécrivez votre mot de passe : *</label>
+                                    <input name = "confirmPassword" id="passwordsignup"  required="required" type="password" placeholder="Saisissez un mot de passe"/>
                                 </p>
 
                                 <p>
-                                    <label for="Statut" class="field_c"  >Votre statut a sein de l'école : *</label>
+                                    <label for="Statut" class="field_c"  ><small>Votre statut a sein de l'école : *</small></label>
                                     <select name="stat"  class=form-control>
                                         <option value=0>Etudiant</option>
                                         <option value=1>Membre du BDE</option>
@@ -84,7 +90,7 @@
                                 </p>-->
 
                                 <p>
-                                    <label for="Centre" class="field_c" >Votre centre : *</label>
+                                    <label for="Centre" class="field_c" <small>>Votre centre : *</small></label>
                                     <select  name="centre" >
                                         <option value=1>Nanterre</option>
                                         <option value=2>Orléans</option>

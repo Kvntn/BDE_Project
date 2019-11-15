@@ -1,5 +1,7 @@
-<?php  
+<?php
+    if (!isset($_SESSION)){
     session_start();
+}
     include("head.php");
     include("nav.php");
     include("footer.php");
@@ -34,7 +36,7 @@
         </div>
 
         <p>
-            <label> Mettre une photo de profil :</label>
+            <label> Ajouter une photo :</label>
             <input type="file" name="photo-prod"/>
         </p> 
        

@@ -1,7 +1,6 @@
 <?php
 
 echo "<br><br><br><br><br>";
-session_start();
 /////////////////////////////////////
 // UPDATES USER ENTRIES IN DATABASE//
 /////////////////////////////////////

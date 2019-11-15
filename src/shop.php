@@ -1,4 +1,9 @@
 
+<?php if (!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -57,5 +62,4 @@
     include("head.php");
     include("nav.php");
     include("footer.php");
-?>
 ?>

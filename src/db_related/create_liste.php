@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION)){
+    session_start();
+}
+
+
 try{
     require "config.php";
 }catch(Exception $e) {

@@ -1,5 +1,8 @@
-<?php  
+<?php
+if (!isset($_SESSION)){
     session_start();
+}
+
     include("head.php");
     include("nav.php");
     include("footer.php");
@@ -41,6 +44,10 @@
         <li class="nav-item">
           <a class="nav-link" href="#p3" data-toggle="tab">Photo de l'événement</a>
         </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#p4" data-toggle="tab">Poster un commentaire</a>
+        </li>
 
       </ul>
 
@@ -53,8 +60,10 @@
         <p class="card-text text-left"><?php echo $event['Description'] ?></p>
         <p class="text-right">
           <small><?php echo $event['Date']?></small><br>
-          <!--<input class="btn btn-outline-warning" href="./db_related/add_participant.php" type="submit" value="Intéressé">-->
-          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
+          <button type="button" class="btn btn-default btn-lg">
+          <span class="badge badge-light">0         <i class="fas fa-heart"></i></span>
+          </button>
+          <input class="btn btn-outline-warning" type="submit" value="Intéressé">
           <?php
             if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
               echo '
@@ -90,40 +99,7 @@
                   <p class="card-text">Campus CESI</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;">0      <i class="fas fa-heart"></i></button>
-                    </div>
-                    <small class="text-muted">Thomas Lima</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" style="max-width:1000px; max-height:600px;" src="./resources/images/CESI_campus" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Campus CESI</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;"><i class="fas fa-heart"></i></button>
-                    </div>
-                    <small class="text-muted">Thomas Lima</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" style="max-width:1000px; max-height:600px;" src="./resources/images/CESI_campus" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Campus CESI</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;"><i class="fas fa-heart"></i></button>
                     </div>
                     <small class="text-muted">Thomas Lima</small>
                   </div>
@@ -132,8 +108,25 @@
             </div>
             
       </div>
+      </div>
 
-  </div>
+      <div class="card-body tab-pane" id="p4">
+      <form class="form">
+
+        <div class="form-label-group">
+            <label>Commentaire</label>
+            <input type="get" name="name_event" class="form-control" required>
+        </div>
+            <br>
+        <p>
+            <label> Ajouter une photo :</label>
+            <input type="file" name="photo-prod"/>
+        </p> 
+
+        <button class="btn btn-secondary" name="add_com"type="submit">Ajouter le commentaire</button>
+
+      </form>
+      </div>
 
   </div>
 
