@@ -8,16 +8,14 @@
     }catch(Exception $e) {
         throw new Exception("No config ! Incorrect file path or the file is corrupted");
     }
-    if(isset($_GET['id'])){
+    if(isset($_GET['id']) && isset($_POST['submit'])){
     $id = $_GET['id'];
     $bdd = db_local::getInstance();
     $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit = $id");
     $requete->execute();
     $produit = $requete->fetch();
     var_dump($produit);
-    if(isset($_POST['submit'])){
-      array_push($_SESSION['cart'],$produit);
-    }
+    array_push($_SESSION['cart'],$produit);
     }
     var_dump($_SESSION['cart']);
 ?>
