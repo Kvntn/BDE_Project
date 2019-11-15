@@ -1,5 +1,6 @@
 <?php
 
+var_dump($_POST);
 
 ///////////////////////////////////////
 // ADDS NEW USER IN NATIONAL DATABASE//
@@ -23,8 +24,8 @@ try{
 }
 
 
-include "../head.php";
-include "../nav.php";
+// include "../head.php";
+// include "../nav.php";
 
 // PASSWORD CHECK a-z A-Z 0-9  @!:;,§/?*µ$=+
 $char = "abcdefghijklmnopqrstuvwyxz0123456789@!:;,§/?*µ$=+";
@@ -46,6 +47,7 @@ if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)) {
 
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
+    sleep(3);
     header("Location: ../connexion.php#toregister");
 }
     
@@ -54,11 +56,12 @@ $_POST['motDePasse'] = md5($_POST['motDePasse']);
 
 if(!endsWith($_POST['email'], '@viacesi.fr')) {
     echo "<h1>Votre adresse mail n'appartient pas au CESI.</h1>";
+    sleep(3);
     header("Location: ../connexion.php#toregister");
 }
 
 if(!isset($_POST['Photo'])) {
-    $_POST['Photo'] = null;
+    $_POST = null;
 }
 
 
@@ -67,6 +70,8 @@ $bdd = db_national::getInstance();
 
 $_POST['stat'] = (int)$_POST['stat'];
 $_POST['centre'] = (int)$_POST['centre'];
+
+var_dump($_POST);
 
 //The following part verifies the existence of an already existing account with the entered mail.
 
@@ -81,7 +86,8 @@ $requete->closeCursor();
 
 if($arr != NULL) {
     echo "L'email de cet utilisateur existe déjà";
-    echo '<script> document.location.replace("../connexion.php#toregister"); </script>'; 
+    sleep(3);
+    header("Location: ../connexion.php#toregister");
 }
     
 
@@ -107,7 +113,7 @@ $requete->closeCursor();
 
 
 if($_POST['centre'] != 1)
-    echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
+     header("Location: ../connexion.php#tologin");
 
 
 $bdd = db_local::getInstance();
@@ -132,6 +138,8 @@ $requete = $bdd->prepare("UPDATE panier SET IDutilisateur = (SELECT IDPanier FRO
 $requete->execute();
 $requete->closeCursor();
 
-echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
+
+ header("Location: ../connexion.php#tologin");
+
 ?>
 
