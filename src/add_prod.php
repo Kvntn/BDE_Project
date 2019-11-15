@@ -34,7 +34,7 @@
         </div>
 
         <p>
-            <label> Mettre une photo de profil :</label>
+            <label> Ajouter une photo :</label>
             <input type="file" name="photo-prod"/>
         </p> 
        

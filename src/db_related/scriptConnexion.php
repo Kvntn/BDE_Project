@@ -42,14 +42,17 @@ if ($arr != NULL) {
         @setcookie('name', $tmp[1], time() + 365*24*3600, "/", null, false, true); 
         setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
         setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true); 
-        setcookie('statut', $_SESSION['statut'], time() + 365*24*3600, "/", null, false, true);
+        setcookie('statut', $arr[0]['Statut'], time() + 365*24*3600, "/", null, false, true);
 
         var_dump($_COOKIE);
         var_dump($_SESSION);
         
         $bdd = db_local::getInstance();
 
-        $requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = $_COOKIE["firstname"], Nom = $_COOKIE["name"] WHERE Email=$email');
+        $requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = :prenom, Nom = :nom WHERE Email=:email');
+        $requete->bindValue(':prenom',$_COOKIE["firstname"],PDO::PARAM_STR);
+        $requete->bindValue(':nom',$_COOKIE["name"],PDO::PARAM_STR);
+        $requete->bindValue(':email',$email,PDO::PARAM_STR);
         $requete->execute();
         $requete->closeCursor();
 
