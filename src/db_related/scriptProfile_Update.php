@@ -40,6 +40,7 @@ $bdd = db_national::getInstance();
 
 $_POST['stat'] = (int)$_POST['stat'];
 $_POST['centre'] = (int)$_POST['centre'];
+$id = (int)$_SESSION['id'];
 
 if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
 {
@@ -56,10 +57,9 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
             {
                 $requete = $bdd->prepare("UPDATE utilisateurs SET
                         MotDePasse = :mdp, 
-                        Statut = :stat, 
                         PhotoDeProfil = :pdp,
                         IDCentre = :centre
-                        WHERE email=:mail ");
+                        WHERE id=:id ");
             }
             else
             {
@@ -77,11 +77,11 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
     }
 }
 
-$_POST['Photo'] = $_SESSION['email'];
 
-$requete->bindValue(':mail', $_SESSION['email'], PDO::PARAM_STR);
+
+
 $requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
-$requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
+$requete->bindValue(':id', $id, PDO::PARAM_STR);
 $requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
 $requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
 
@@ -98,11 +98,10 @@ if($_POST['centre'] != 1)
 
 $bdd = db_local::getInstance();
 
-$requete = $bdd->prepare("UPDATE utilisateurs SET MotDePasse = :mdp, Statut = :stat, PhotoDeProfil = :pdp WHERE email=:mail");
+$requete = $bdd->prepare("UPDATE utilisateurs SET MotDePasse = :mdp, Statut = :stat, PhotoDeProfil = :pdp WHERE id=:id");
 
-$requete->bindValue(':mail', $_SESSION['email'], PDO::PARAM_STR);
+$requete->bindValue(':id', $id, PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
-$requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
 $requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
 
 $requete->execute();

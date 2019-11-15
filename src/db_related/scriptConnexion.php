@@ -36,6 +36,8 @@ if ($arr != NULL) {
         $tmp[1] = ucfirst($tmp[1]);
         $_SESSION = $arr[0];
         $_SESSION['login'] = true;
+        $_SESSION['firstname'] = $tmp[0];
+        $_SESSION['name'] = $tmp[1];
 
         echo "Logged in as $tmp[1] $tmp[0] !";
 
