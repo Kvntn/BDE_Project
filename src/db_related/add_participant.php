@@ -21,6 +21,4 @@ header("Location: ../singleevent.php");
 }catch(Exception $e){
     echo "<script>alert(\"Vous êtes déja inscrit a l'evenement\");history.go(-1);</script>";
 }
-
-
 ?>
