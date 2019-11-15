@@ -1,26 +1,32 @@
 {
   "name": "bde_api",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "RESTful API for CESI's BDE website",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "node server.js",
+    "dev": "nodemon ./app.js",
     "sequelize-skeleton": "npx sequelize init:models; npx sequelize init:config",
-    "init-db": "cd DIR_WHERE_MYSQL_BIN_IS && echo 'DROP DATABASE IF EXISTS api_node_demo; CREATE DATABASE api_node_demo CHARACTER SET utf8 COLLATE utf8_general_ci' | ./mysql -u root && cd -"
+    "start": "node server.js"
   },
   "keywords": [
     "RESTful",
     "API"
   ],
-  "author": "Kvntn, KindPixel, sfr (Fadingpisces), GrineFather",
+  "author": "Kvntn, KindPixel, sfr (Fadingpisces)",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.19.4"
   },
   "dependencies": {
+    "async": "^3.1.0",
     "body-parser": "^1.19.0",
+    "cookies": "^0.8.0",
     "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "mysql": "^2.17.1",
     "mysql2": "^2.0.0",
