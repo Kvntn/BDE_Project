@@ -35,7 +35,8 @@ if (strlen($_POST['motDePasse']) < $nb_char) {
 if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $_POST['motDePasse'])) {
     echo 'Mot de passe conforme';
 } else {
-    echo '<script> document.location.replace("../connexion.php#tologin"); </script>';
+    echo '<script> document.location.replace("../connexion.php#toregister"); </script>';
+    die();
 }	
 
 
@@ -43,6 +44,7 @@ if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $_POST['motDePass
 if($_POST['confirmPassword'] != $_POST['motDePasse']){
     echo "<h1>Les mots de passe ne correspondent pas</h1>";
     echo '<script> document.location.replace("../connexion.php#toregister"); </script>';
+    die();
 }
     
 $_POST['motDePasse'] = md5($_POST['motDePasse']);
@@ -51,13 +53,12 @@ $_POST['motDePasse'] = md5($_POST['motDePasse']);
 if(!endsWith($_POST['email'], '@viacesi.fr')) {
     echo "<h1>Votre adresse mail n'appartient pas au CESI.</h1>";
     echo '<script> document.location.replace("../connexion.php#toregister"); </script>';
+    die();
 }
 
 if(!isset($_POST['Photo'])) {
     $_POST['Photo'] = null;
 }
-
-
 
 $bdd = db_national::getInstance();
 
@@ -76,15 +77,23 @@ $requete->closeCursor();
 
 if($arr != NULL) {
     echo "L'email de cet utilisateur existe déjà";
-    echo '<script> document.location.replace("../connexion.php#toregister"); </script>'; 
+    echo '<script> document.location.replace("../connexion.php#toregister"); </script>';
+    die(); 
 }
-    
+
+$email = $_POST['email'];
+$tmp = str_replace('@viacesi.fr', '', $email);
+$tmp = explode('.', $tmp);
+$tmp[0] = ucfirst($tmp[0]);
+$tmp[1] = ucfirst($tmp[1]);
 
 //Writing in national databse
-$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur,Email, MotDePasse, Statut, PhotoDeProfil, IDCentre) 
-                          VALUES (null,:email,:mdp,:stat,:pdp,:centre) ");
+$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur,Nom,Prenom,Email, MotDePasse, Statut, PhotoDeProfil, IDCentre) 
+                          VALUES (null,:lname,:fname,:email,:mdp,:stat,:pdp,:centre) ");
 
 
+$requete->bindValue(':lname', $tmp[1], PDO::PARAM_STR);
+$requete->bindValue(':fname', $tmp[0], PDO::PARAM_STR);
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
 $requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
@@ -106,9 +115,11 @@ if($_POST['centre'] != 1)
 
 $bdd = db_local::getInstance();
 
-$LocalRequest = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Email, MotDePasse, Statut, PhotoDeProfil) 
-                        VALUES (null,:email,:mdp,:stat,:pdp)");
+$LocalRequest = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Nom, Prenom, Email, MotDePasse, Statut, PhotoDeProfil) 
+                        VALUES (null,:lname,:fname,:email,:mdp,:stat,:pdp)");
 
+$LocalRequest->bindValue(':lname', $tmp[1], PDO::PARAM_STR);
+$LocalRequest->bindValue(':fname', $tmp[0], PDO::PARAM_STR);
 $LocalRequest->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $LocalRequest->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
 $LocalRequest->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);

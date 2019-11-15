@@ -17,7 +17,7 @@
         <a class="nav-link" href="shop.php">Boutique</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="event.php">Evénement</a>
+        <a class="nav-link" href="event.php">Evenement</a>
       </li>
       
     </ul>
@@ -52,7 +52,7 @@
                     <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
                 }
                 
-                if(@$_SESSION['Statut'] == 2) {
+                if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
                   echo "
                   <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
                   <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";

@@ -15,10 +15,10 @@ class Participant
 	
 	public function display($listPart){
     foreach($this->listPart as $rows => $key){
-		echo '
+        echo '
         <tr>
-            <td>',$key['Prenom'],'</td>
             <td>',$key['Nom'],'</td>
+            <td>',$key['Prenom'],'</td>
         </tr>';
 		}
 	}

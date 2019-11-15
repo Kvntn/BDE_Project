@@ -33,7 +33,7 @@ if (!isset($_SESSION)){
       <ul class="nav nav-tabs card-header-tabs">
 
         <li class="nav-item">
-          <a class="nav-link active" href="#p1" data-toggle="tab">Evénement</a>
+          <a class="nav-link active" href="#p1" data-toggle="tab">Evenement</a>
         </li>
 
         <li class="nav-item">
@@ -52,6 +52,15 @@ if (!isset($_SESSION)){
           <a class="nav-link" href="#p5" data-toggle="tab">Poster une photo</a>
         </li>
 
+        <?php
+            if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+              echo '
+              <li class="nav-item">
+                <a class="nav-link" href="#p6" data-toggle="tab">Liste des partcipants</a>
+              </li>';
+            }
+        ?>
+
       </ul>
 
     </div>
@@ -69,9 +78,9 @@ if (!isset($_SESSION)){
           <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
           <?php
             if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
-              echo '
-              <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
-              <a class="btn btn-outline-danger" href="page_report.php" role="button">Signaler</a>';
+              echo 
+              //<a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
+              '<a class="btn btn-outline-danger" href="page_report.php" role="button">Signaler</a>';
             }
           ?>
         </p>
@@ -140,6 +149,70 @@ if (!isset($_SESSION)){
       </form>
       </div>
 
+      <div class="card-body tab-pane" id="p6">
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+          <div class="container-datatable">
+            <div class="row">
+              <table id="example" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+              <tr>
+              <th>Nom</th>
+              <th>Prenom</th>
+              </tr>
+              </thead>
+
+              <tbody>
+
+              <?php
+
+              require('./listDisplay.php');
+
+              $bdd = db_local::getInstance();
+
+              $requete = $bdd->prepare("SELECT Nom, Prenom FROM utilisateurs INNER JOIN inscrire ON utilisateurs.IDutilisateur = inscrire.IDutilisateur WHERE IDevenement = $id");
+              $requete->execute();
+              $listPart = $requete->fetchAll();
+              $events = new Participant($listPart);
+              $events->display($listPart);
+              ?>
+
+              </tbody>
+
+              </table>
+            </div>
+          </div>
+
+          <script>
+          $(document).ready(function() {
+            $('#example').DataTable(
+              
+              {     
+                
+                "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+                "iDisplayLength": 5
+              } 
+            );
+          } );
+
+
+          function checkAll(bx) {
+            var cbs = document.getElementsByTagName('input');
+            for(var i=0; i < cbs.length; i++) {
+              if(cbs[i].type == 'checkbox') {
+                cbs[i].checked = bx.checked;
+              }
+            }
+          }
+          </script>
+          <p class="text-right">
+            <?php
+              if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+                echo '<a class="btn btn-outline-info" href="./db_related/dl_liste.php" role="button">Télécharger la liste des participants</a>';
+              }
+            ?>
+          </p>
+      </div>
   </div>
 
 </div>
