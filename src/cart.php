@@ -1,8 +1,25 @@
 <?php  
     include("head.php");
-    include("nav.php");
-    include("footer.php");
-    
+  
+    $_SESSION['cart'] = array();
+    require('./db_related/pdo_loc.php');
+    try{
+        require("./db_related/config.php");
+    }catch(Exception $e) {
+        throw new Exception("No config ! Incorrect file path or the file is corrupted");
+    }
+    if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $bdd = db_local::getInstance();
+    $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit = $id");
+    $requete->execute();
+    $produit = $requete->fetch();
+    var_dump($produit);
+    if(isset($_POST['submit'])){
+      array_push($_SESSION['cart'],$produit);
+    }
+    }
+    var_dump($_SESSION['cart']);
 ?>
 <div class="container-cart">
 <div class="pb-5">
@@ -37,12 +54,12 @@
                     <div class="p-2">
                       <img src="./resources/images/hoodie_png.png" alt=""  style="max-width:70px; max-height:70px;" class="img-fluid rounded shadow-sm">
                       <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5>
+                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"></a></h5>
                       </div>
                     </div>
                   </th>
-                  <td class="border-0 align-middle"><strong><?php echo $_GET['id']?></strong></td>
-                  <td class="border-0 align-middle"><strong><?php echo $_POST['quantity']?></strong></td>
+                  <td class="border-0 align-middle"><strong><?php echo $_SESSION['cart'][0]['NomProduit']?></strong></td>
+                  <td class="border-0 align-middle"><strong><?php echo $_SESSION['cart'][0]['Prix']?></strong></td>
                   <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
                 </tr>
 
