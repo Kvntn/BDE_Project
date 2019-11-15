@@ -138,4 +138,4 @@ $requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = $_COOKIE["firstname"]
 $requete->execute();
 $requete->closeCursor();
 */
-?>
+
