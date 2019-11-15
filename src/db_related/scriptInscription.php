@@ -127,15 +127,4 @@ $requete->execute();
 $requete->closeCursor();
 
 //echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
-
- /*
-A AJOUTER
-
-        
-$bdd = db_local::getInstance();
-
-$requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = $_COOKIE["firstname"], Nom = $_COOKIE["name"] WHERE Email=$email');
-$requete->execute();
-$requete->closeCursor();
-*/
-
+?>
