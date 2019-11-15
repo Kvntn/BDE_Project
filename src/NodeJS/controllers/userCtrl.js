@@ -23,16 +23,6 @@ const PASSWORD_REGEX = /^(?=.*\d).{4,12}$/;
 module.exports = {
 
     test: (req, res) => { 
-        token.verify(req.body.token, ACCESS_KEY, (err, authorize) => {
-            if (err) {
-                //If error send Forbidden (403)
-                res.sendStatus(403);
-                throw new Error('ERROR: Could not connect to the protected route')
-            } else {
-                //If token is successfully verified, we can send the autorized data 
-                console.log('SUCCESS: Connected to protected route');
-            }
-        });
         con.query("SELECT * FROM utilisateurs", (err, result) => {
             if (err) throw err;
             res.status(400).json({

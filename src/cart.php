@@ -1,7 +1,7 @@
 <?php  
     if (!isset($_SESSION)){
     session_start();
-}
+  }
     include("head.php");
     include("nav.php");
     include("footer.php");
@@ -11,16 +11,35 @@
     }catch(Exception $e) {
         throw new Exception("No config ! Incorrect file path or the file is corrupted");
     }
+
+    if(!$_SESSION['cart']){
+        $_SESSION['cart'] = array();
+    }
+
     if(isset($_GET['id']) && isset($_POST['submit'])){
       $id = $_GET['id'];
+
       $bdd = db_local::getInstance();
       $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit = $id");
       $requete->execute();
       $produit = $requete->fetch();
+      $requete->closeCursor();
+
       $produit['Quantite'] = $_POST['quantity'];
       $produit['PrixTotal'] = $produit['Quantite']*$produit['Prix'];
+
+      var_dump($produit);
+
       array_push($_SESSION['cart'],$produit);
     }
+
+    include('./cartDisplay.php');
+    if($_SESSION['cart'] != null) {
+      $cart = $_SESSION['cart'];
+      $cartDisplay = new Cart($cart);
+    }
+
+
 ?>
 
 <div class="container-cart">
@@ -54,15 +73,13 @@
 
               <tbody>
 
-                
                 <?php 
-                include('./cartDisplay.php');
-                $cart = $_SESSION['cart'];
-                $cartDisplay = new Cart($cart);
-                $cartDisplay->display($cart);
+                  if($_SESSION['cart'] != null)
+                    $cartDisplay->display($cart);
+                  else 
+                    echo '<td class="border-0 align-middle"><strong>Votre panier est vide.</strong></td>';
+                  
                 ?>
-                
-
               </tbody>
             </table>
           </div>
@@ -70,9 +87,9 @@
           <!-- End -->
         </div>
       </div>
-
-      <button type="button" class="btn btn-light button-purchase">Valider la commande</button>
-
+      <form action="validerlacommande.php" method="post">
+        <button input type="submit" type="button" class="btn btn-light button-purchase">Valider la commande</button>
+      </form>
     </div>
   </div>
 </div>
