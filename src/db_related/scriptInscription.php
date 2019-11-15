@@ -109,8 +109,11 @@ $requete->closeCursor();
 
 
 
-if($_POST['centre'] != 1)
-    echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
+if($_POST['centre'] != 1){
+    echo "<script>alert(\"Vous êtes sur le mauvais site du BDE de votre centre\");</script>";
+    echo '<script> document.location.replace("https://www.google.fr/"); </script>'; 
+    die();
+}
 
 
 $bdd = db_local::getInstance();

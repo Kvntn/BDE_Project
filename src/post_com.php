@@ -15,7 +15,6 @@ if (!isset($_SESSION)){
 //   $idutilisateur = $_SESSION['IDutilisateur'];
 
   $bdd = db_local::getInstance();
-    var_dump($_SESSION);
   $requete = $bdd->prepare("INSERT INTO commentairesevenements(ContenuCommentaire ,IDEvenement,IDUtilisateur) 
                           VALUES (:contenu,:IDEvent,:IDUser)");
 
@@ -25,4 +24,6 @@ if (!isset($_SESSION)){
 
     $requete->execute();
     $requete->closeCursor();
+
+    echo '<script> history.go(-1); </script>';
 ?>
