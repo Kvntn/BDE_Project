@@ -8,7 +8,6 @@ if (!isset($_SESSION)){
     include("footer.php");
 
 
-      require('./db_related/pdo_loc.php');
       try{
           require("./db_related/config.php");
       }catch(Exception $e) {
@@ -16,8 +15,9 @@ if (!isset($_SESSION)){
       }
 
     if(isset($_GET['id'])) {
-      $id = $_GET['id'];
+      $_SESSION['IDEvenement'] = $_GET['id'];
     }
+    $id = $_SESSION['IDEvenement'];
     $bdd = db_local::getInstance();
 
     $requete = $bdd->prepare("SELECT * FROM evenements WHERE IDEvenement = $id");
@@ -48,6 +48,10 @@ if (!isset($_SESSION)){
           <a class="nav-link" href="#p4" data-toggle="tab">Poster un commentaire</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="#p5" data-toggle="tab">Poster une photo</a>
+        </li>
+
       </ul>
 
     </div>
@@ -62,9 +66,9 @@ if (!isset($_SESSION)){
           <button type="button" class="btn btn-default btn-lg">
           <span class="badge badge-light">0         <i class="fas fa-heart"></i></span>
           </button>
-          <input class="btn btn-outline-warning" type="submit" value="Intéressé">
+          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
           <?php
-            if(@$_SESSION['Statut'] == 2) {
+            if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
               echo '
               <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
               <input class="btn btn-outline-danger" type="submit" value="Signaler">';
@@ -95,7 +99,6 @@ if (!isset($_SESSION)){
               <div class="card mb-4 shadow-sm">
                 <img class="card-img-top" style="max-width:1000px; max-height:600px;" src="./resources/images/CESI_campus" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text">Campus CESI</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;">0      <i class="fas fa-heart"></i></button>
@@ -110,19 +113,29 @@ if (!isset($_SESSION)){
       </div>
 
       <div class="card-body tab-pane" id="p4">
-      <form class="form">
+      <form class="form" method="post" action="post_com.php">
 
         <div class="form-label-group">
             <label>Commentaire</label>
-            <input type="get" name="name_event" class="form-control" required>
+            <input type="post" name="name_com" class="form-control" required>
         </div>
             <br>
+
+        <button class="btn btn-secondary" name="add_com" type="submit">Ajouter le commentaire</button>
+
+      </form>
+      </div>
+
+      <div class="card-body tab-pane" id="p5">
+      <form class="form" method="post" action="post_com.php">
+
         <p>
             <label> Ajouter une photo :</label>
             <input type="file" name="photo-prod"/>
-        </p> 
+        </p>
+        <br>
 
-        <button class="btn btn-secondary" name="add_com"type="submit">Ajouter le commentaire</button>
+        <button class="btn btn-secondary" name="add_com" type="submit">Ajouter la photo</button>
 
       </form>
       </div>
