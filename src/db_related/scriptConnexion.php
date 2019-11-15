@@ -46,6 +46,13 @@ if ($arr != NULL) {
 
         var_dump($_COOKIE);
         var_dump($_SESSION);
+        
+        $bdd = db_local::getInstance();
+
+        $requete = $bdd->prepare('UPDATE utilisateurs SET Prenom = $_COOKIE["firstname"], Nom = $_COOKIE["name"] WHERE Email=$email');
+        $requete->execute();
+        $requete->closeCursor();
+
         header('Location: ../index.php');
 }else{
     echo '<h2>Unknown login ! Try again, you entered : '.$email.'</h2>';

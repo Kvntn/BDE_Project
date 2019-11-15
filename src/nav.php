@@ -51,8 +51,8 @@
                 
                 if(@$_SESSION['Statut'] == 2) {
                   echo "
-                  <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un produit</a>
-                  <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un évènement</a>";
+                  <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
+                  <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";
                 }
                 
             ?>

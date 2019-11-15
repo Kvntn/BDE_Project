@@ -5,11 +5,11 @@
     include("aside.php");
 
     require('./db_related/pdo_loc.php');
-    try{
-        require("./db_related/config.php");
-    }catch(Exception $e) {
-        throw new Exception("No config ! Incorrect file path or the file is corrupted");
-    }
+        try{
+            require("./db_related/config.php");
+        }catch(Exception $e) {
+            throw new Exception("No config ! Incorrect file path or the file is corrupted");
+        }
     if(isset($_GET['id'])){
     $id = $_GET['id'];}
     $bdd = db_local::getInstance();

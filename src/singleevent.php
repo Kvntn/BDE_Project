@@ -3,6 +3,23 @@
     include("head.php");
     include("nav.php");
     include("footer.php");
+
+
+      require('./db_related/pdo_loc.php');
+      try{
+          require("./db_related/config.php");
+      }catch(Exception $e) {
+          throw new Exception("No config ! Incorrect file path or the file is corrupted");
+      }
+
+    if(isset($_GET['id'])) {
+      $id = $_GET['id'];
+    }
+    $bdd = db_local::getInstance();
+
+    $requete = $bdd->prepare("SELECT * FROM evenements WHERE IDEvenement = $id");
+    $requete->execute();
+    $event = $requete->fetch();
 ?>
 
 <div class="container-singleevent">
@@ -31,14 +48,16 @@
   <div class="tab-content">
 
       <div class="card-body tab-pane active" id="p1">
-        <h5 class="card-title">Week-End d'intégration <small class="text-right">Payant</small></h5>
-        <p class="card-text texte-left">Venez profiter d'un merveilleux weekend en compagnie de vos futur colègues.<p class="text-right">
+        <h5 class="card-title"><strong><?php echo $event['NomEvenement'] ?></strong><small class="text-right">     -     <?php echo $event['Prix'] ?>€</small></h5>
+        <p class="card-text text-left"><?php echo $event['Description'] ?></p>
+        <p class="text-right">
+          <small><?php echo $event['Date']?></small><br>
           <input class="btn btn-outline-warning" type="submit" value="Intéressé">
-          <input class="btn btn-outline-danger" type="submit" value="Signaler">
           <?php
             if(@$_SESSION['Statut'] == 2) {
               echo '
-              <a class="btn btn-outline-info" href="#" role="button">Acceder à la liste des participant</a>';
+              <a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
+              <input class="btn btn-outline-danger" type="submit" value="Signaler">';
             }
           ?>
         </p>
