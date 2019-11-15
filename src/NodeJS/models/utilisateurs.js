@@ -1,6 +1,6 @@
 /* jshint indent: 2 */
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   return sequelize.define('utilisateurs', {
     IDUtilisateur: {
       type: DataTypes.INTEGER(11),
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     PhotoDeProfil: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     Statut: {
       type: DataTypes.INTEGER(11),
