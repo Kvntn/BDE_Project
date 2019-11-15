@@ -63,7 +63,7 @@ if (!isset($_SESSION)){
           <button type="button" class="btn btn-default btn-lg">
           <span class="badge badge-light">0         <i class="fas fa-heart"></i></span>
           </button>
-          <input class="btn btn-outline-warning" type="submit" value="Intéressé">
+          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
           <?php
             if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
               echo '
