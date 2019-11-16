@@ -14,6 +14,7 @@ if (!isset($_SESSION)){
   ?>
 
 <div class="container-event">
+<h5 align="center">Derniers évènements</h5><br>
   <div class="list-group">
 
 <?php
@@ -38,6 +39,7 @@ if (!isset($_SESSION)){
 
 
 <div class="container-shop-index">
+<h5 align="center">Recommendations</h5><br>
     <div class="row">
           <?php
           
@@ -49,21 +51,6 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $minid = 0;
-          if (isset($_GET['button'])){
-          switch ($_GET['button'])
-          {
-              case "previous" :
-                $minid = $minid-3;
-              if($minid < 0){ $minid = 0;}
-              break;
-              case "next" :
-              $minid = $minid+3;
-              break;
-              default :
-              $minid = 0;
-              break;
-          }
-        }
           $requete = $bdd->prepare("SELECT * from listeproduits ORDER BY RAND() LIMIT 3");
           $requete->execute();
           $listproducts = $requete->fetchAll();

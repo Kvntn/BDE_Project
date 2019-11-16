@@ -17,7 +17,7 @@
         <a class="nav-link" href="shop.php">Boutique</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="event.php">Evènements</a>
+        <a class="nav-link" href="event.php">Évènements</a>
       </li>
       
     </ul>

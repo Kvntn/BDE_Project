@@ -33,15 +33,15 @@ if (!isset($_SESSION)){
       <ul class="nav nav-tabs card-header-tabs">
 
         <li class="nav-item">
-          <a class="nav-link active" href="#p1" data-toggle="tab">Evenement</a>
+          <a class="nav-link active" href="#p1" data-toggle="tab">Évènement</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#p2" data-toggle="tab">Commentaire</a>
+          <a class="nav-link" href="#p2" data-toggle="tab">Commentaires</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#p3" data-toggle="tab">Photo de l'événement</a>
+          <a class="nav-link" href="#p3" data-toggle="tab">Photos de l'événement</a>
         </li>
         
         <li class="nav-item">
