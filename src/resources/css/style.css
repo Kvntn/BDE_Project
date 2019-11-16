@@ -195,11 +195,11 @@
   z-index: 100;
 }
 .container-shop-index {
-  padding:px;
+  padding:25px;
   margin-top:30px;
   margin-bottom:50px;
-  margin-left:20px;
-  margin-right:20px;
+  margin-left:30px;
+
   overflow-x: hidden;
 }
 
