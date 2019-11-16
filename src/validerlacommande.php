@@ -47,7 +47,8 @@
     echo '
         <script>
             alert("Votre commande a bien été prise en compte ! Un mail sera envoyé pour convenir de votre transaction avec un personnel du bde.");
-            //header("Location : ./cart.php");
+            document.location.replace("cart.php");
         </script>';
+    
 
 ?>
