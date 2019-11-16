@@ -7,7 +7,7 @@ try{
     throw new Exception("No config ! Incorrect file path or the file is corrupted");
 }
 
-$idparticipant = $_SESSION['IDutilisateur'];
+$idparticipant = $_SESSION['IDUtilisateur'];
 $idevent = $_SESSION['IDEvenement'];
 
 try{
