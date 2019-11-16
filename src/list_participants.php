@@ -23,12 +23,12 @@
 
         <?php
           require('./listDisplay.php');
-                require('./db_related/pdo_loc.php');
-                try{
-                    require("./db_related/config.php");
-                }catch(Exception $e) {
-                    throw new Exception("No config ! Incorrect file path or the file is corrupted");
-                }
+          require('./db_related/pdo_loc.php');
+          try{
+              require("./db_related/config.php");
+          }catch(Exception $e) {
+              throw new Exception("No config ! Incorrect file path or the file is corrupted");
+          }
 
           $bdd = db_local::getInstance();
 
