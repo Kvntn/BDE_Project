@@ -47,7 +47,7 @@
     //keep this line at end of file
     echo '
         <script>
-            alert("Votre commande a bien été prise en compte ! Un mail sera envoyé pour convenir de votre transaction avec un personnel du bde.");
+            alert("Votre commande a bien été prise en compte ! Un mail sera envoyé pour convenir de votre transaction avec un personnel du BDE.");
             document.location.replace("cart.php");
         </script>';
     
