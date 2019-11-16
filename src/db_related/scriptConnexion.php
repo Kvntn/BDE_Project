@@ -23,8 +23,6 @@ $requete->execute();
 $arr = $requete->fetchAll();
 $requete->closeCursor();
 
-var_dump($arr);
-
 
 if ($arr != NULL) {
         
@@ -44,18 +42,15 @@ if ($arr != NULL) {
     setcookie('email', $_POST['email'], time() + 365*24*3600, "/", null, false, true);
     @setcookie('name', $tmp[1], time() + 365*24*3600, "/", null, false, true);
     setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
-    setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true); 
-    setcookie('statut', $_SESSION['Statut'], time() + 365*24*3600, "/", null, false, true); 
+    setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true);
+    setcookie('statut', $_SESSION['Statut'], time() + 365*24*3600, "/", null, false, true);
 
-    var_dump($_COOKIE);
-    var_dump($_SESSION);
-
-    //header('Location: ../index.php');
+    header('Location: ../index.php');
     
 }else{
     echo '<h2>Utilisateur non trouvé ! Êtes-vous bien inscrits sur le centre de Nanterre ? Votre email : '. $_POST['email'] .'</h2>';
     session_destroy();
-    //header("Location: ../connexion.php#tologin");
+    header("Location: ../connexion.php#tologin");
 }
 
 ?>
