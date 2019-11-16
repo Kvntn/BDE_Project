@@ -28,8 +28,6 @@
       $produit['Quantite'] = $_POST['quantity'];
       $produit['PrixTotal'] = $produit['Quantite']*$produit['Prix'];
 
-      var_dump($produit);
-
       array_push($_SESSION['cart'],$produit);
     }
 
