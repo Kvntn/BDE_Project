@@ -11,8 +11,6 @@ if (!isset($_SESSION)){
     include("head.php");
     include("nav.php");
     include("footer.php");
-    echo '<br><br><br><br><br><br><br><br><br><br><br><br><br>';
-    echo 'g envie de me suicider';
   ?>
 
   <div class="container-event">
