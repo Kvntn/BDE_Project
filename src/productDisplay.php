@@ -18,8 +18,8 @@ class Product
     foreach($this->listproducts as $rows => $key){
 		echo '
 		<div class="col-md-4">
-		<div class="card mb-4 box-shadow">
-            <img class="card-img-top" style="max-width: 400px; max-height:400px; min-height:400px;" src="',$key['Photo'],'">
+		<div class="card mb-4 box-shadow" style="width:400px">
+            <img class="card-img-top" style="max-width: 500px; max-height:400px; min-height:400px;" src="',$key['Photo'],'">
             <div class="card-body">
 				<p class="card-text">',$key['NomProduit'],'</p>
                 <div class="d-flex justify-content-between align-items-center">

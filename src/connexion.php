@@ -6,12 +6,6 @@ if (!isset($_SESSION)){
 
 <!DOCTYPE html>
 
-<!--####################################
- Auteur : Emma Prudent
- Date : 2017
- Contexte : Prosit Exia CESI - PHP/BDD
- #######################################-->
-
 <html>
 
 <?php 

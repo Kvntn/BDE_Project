@@ -22,10 +22,14 @@
       
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
-
-      <li class="nav-item">
-        <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
-      </li>
+    <?php
+      
+        if(isset($_SESSION['login']) && $_SESSION['login'] == true){
+          echo '<li class="nav-item">
+                  <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                </li>';
+        }
+      ?>
       
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -38,7 +42,7 @@
                 if(!isset($_COOKIE['firstname']))
                     $_COOKIE['firstname'] = 'user';
 
-                if(isset($_SESSION['login'])){
+                if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                     $fname = $_COOKIE['firstname'];
                     echo "
                     <a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a>
@@ -52,20 +56,19 @@
                     <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
                 }
                 
-                if(@$_SESSION['Statut'] == 1) {
+                if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
                   echo "
                   <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
                   <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";
                 }
-                
             ?>
         </div>
       </li>
 
-<?php
-  include("search.php");
-  include("head.php");
-?>
+    <?php
+      include("search.php");
+      include("head.php");
+    ?>
 
     </ul>
     

@@ -8,5 +8,5 @@
 
     unset($_SESSION['cart'][$_GET['key']]);
 
-    echo '<script>document.location.replace("./cart.php")</script>';
+    echo '<script>document.window.location("./cart.php");</script>';
 ?>
