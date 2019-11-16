@@ -40,8 +40,6 @@ if ($arr != NULL) {
 
     echo "Logged in as $tmp[1] $tmp[0] !";
 
-    var_dump($_SESSION);
-
     header('Location: ../index.php');
     
 }else{
