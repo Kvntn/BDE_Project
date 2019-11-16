@@ -41,28 +41,26 @@
           <?php
                 if(!isset($_COOKIE['firstname']))
                     $_COOKIE['firstname'] = 'user';
-
-                if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+    
+                if(@$_SESSION['Statut'] == 1) {
                   echo "
                   <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
                   <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";
                 }
-                
+
                 if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                     $fname = $_COOKIE['firstname'];
                     echo "
                     <a class=\"dropdown-item\" href=\"profile_edit.php\">Editer le profil</a>
                     <a class=\"dropdown-item\" href=\"disconnect.php\">Déconnexion</a>";
-                } 
+                }
                 
                 if(!isset($_SESSION['login'])){
                     $fname = $_COOKIE['firstname'];
                     echo "
                     <a class=\"dropdown-item\" href=\"connexion.php#toregister\">Inscription</a>
                     <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
-                }
-                
-                
+                }                               
             ?>
         </div>
       </li>
