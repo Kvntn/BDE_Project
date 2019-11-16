@@ -36,14 +36,11 @@ if ($arr != NULL) {
     $_SESSION['login']      = true;
     $_SESSION['firstname']  = $tmp[0];
     $_SESSION['name']       = $tmp[1];
+    $_SESSION['unhashed']   = $_POST['motDePasse'];
 
     echo "Logged in as $tmp[1] $tmp[0] !";
 
-    setcookie('email', $_POST['email'], time() + 365*24*3600, "/", null, false, true);
-    @setcookie('name', $tmp[1], time() + 365*24*3600, "/", null, false, true);
-    setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
-    setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true);
-    setcookie('statut', $_SESSION['Statut'], time() + 365*24*3600, "/", null, false, true);
+    var_dump($_SESSION);
 
     header('Location: ../index.php');
     

@@ -25,7 +25,6 @@
     <?php
       
         if(isset($_SESSION['login']) && $_SESSION['login'] == true){
-          $fname = $_COOKIE['firstname'];
           echo '<li class="nav-item">
                   <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="cart.php"><i class="fas fa-shopping-cart fa-lg"></i></a>
                 </li>';
