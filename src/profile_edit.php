@@ -32,12 +32,7 @@
               <label for="passwordsignup" class="youpasswd"  >Réécrivez votre mot de passe : *</label>
               <input id="passwordsignup" name = "conf_newpw" required="required" type="password" placeholder="Saisissez-le à nouveau"/>
           </p>
-
-
-          <!--<p>
-              <label for="Photo" class="uname"  >Photo : </label>
-              <input id="Photosignup" name="Photo" type="text" placeholder="Changez de photo !" />
-          </p>-->
+          
           <p>
             <label> Mettre une photo de profil :</label>
             <input type="file" name="Photo"/>
