@@ -21,10 +21,7 @@ class Image
           <img class="card-img-top" style="max-width:500px; max-height:400px;min-height:400px;" src="',$key['LienPhoto'],'" alt="Card image cap">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary" style="max-width:1000px; max-height:600px;">0      <i class="fas fa-heart"></i></button>
-              </div>
-              <small class="text-muted">',$_SESSION['firstname'],'',$_SESSION['name'],'</small>
+              <small class="text-muted">',$key['Prenom'],'  ',$key['Nom'],'</small>
             </div>
           </div>
         </div>

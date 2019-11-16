@@ -123,7 +123,7 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * from photos WHERE IDEvenement = $idevent");
+          $requete = $bdd->prepare("SELECT * FROM Photos INNER JOIN utilisateurs ON Photos.IDUtilisateur = utilisateurs.IDUtilisateur ;");
           $requete->execute();
           $listimg = $requete->fetchAll();
           $coms = new Image($listimg);
