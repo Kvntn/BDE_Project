@@ -20,8 +20,11 @@ if (!isset($_SESSION)){
     $id = $_SESSION['IDEvenement'];
     $bdd = db_local::getInstance();
 
-    $requete = $bdd->prepare("SELECT * FROM evenements WHERE IDEvenement = $id");
+    $requete = $bdd->prepare("SELECT * FROM evenements WHERE IDEvenement = $id;");
+    $rq = $bdd->prepare("SELECT COUNT(*) FROM likesevenements WHERE IDEvenement = $id");
+    $rq->execute();
     $requete->execute();
+    $count = $rq->fetch();
     $event = $requete->fetch();
 ?>
 
@@ -33,15 +36,15 @@ if (!isset($_SESSION)){
       <ul class="nav nav-tabs card-header-tabs">
 
         <li class="nav-item">
-          <a class="nav-link active" href="#p1" data-toggle="tab">Evenement</a>
+          <a class="nav-link active" href="#p1" data-toggle="tab">Évènement</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#p2" data-toggle="tab">Commentaire</a>
+          <a class="nav-link" href="#p2" data-toggle="tab">Commentaires</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#p3" data-toggle="tab">Photo de l'événement</a>
+          <a class="nav-link" href="#p3" data-toggle="tab">Photos de l'événement</a>
         </li>
         
         <li class="nav-item">
@@ -73,7 +76,8 @@ if (!isset($_SESSION)){
         <p class="text-right">
           <small><?php echo $event['Date']?></small><br>
           <button type="button" class="btn btn-default btn-lg">
-          <span class="badge badge-light">0         <i class="fas fa-heart"></i></span>
+
+          <a href="likeEvent.php?id=<?php echo $event['IDEvenement']?>"><span class="badge badge-light"><?php echo $count['COUNT(*)'];?><i class="fas fa-heart"></i></span></a>
           </button>
           <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
           <?php
@@ -97,7 +101,8 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * from commentairesevenements WHERE IDEvenement = $idevent");
+          $requete = $bdd->prepare("SELECT * from commentairesevenements WHERE IDEvenement = $idevent;
+                                    SELECT COUNT(*) FROM likescommentaires WHERE IDEvenement = $idevent");
           $requete->execute();
           $listcom = $requete->fetchAll();
           $coms = new Commentaires($listcom);

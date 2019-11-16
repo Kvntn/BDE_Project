@@ -28,7 +28,6 @@ class Commentaires
         </button></a>
         </div>
         ';
-        var_dump($key);
 		}
 	}
 }

@@ -40,6 +40,14 @@ if ($arr != NULL) {
 
     echo "Logged in as $tmp[1] $tmp[0] !";
 
+    var_dump($_SESSION);
+
+    if(isset($_COOKIE['accept_cookie']) && $_COOKIE['accept_cookie'] == true) {
+        setcookie('firstname',$_SESSION['firstname'], time() + 24*3600, "/", null, false, true);
+        setcookie('name', $_SESSION['name'], time() + 24*3600, "/", null, false, true);
+        setcookie('ID',$_SESSION['IDUtilisateur'], time() + 24*3600, "/", null, false, true);
+    }
+    
     header('Location: ../index.php');
     
 }else{
