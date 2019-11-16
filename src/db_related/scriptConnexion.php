@@ -53,7 +53,7 @@ if ($arr != NULL) {
 }else{
     echo '<h2>Utilisateur non trouvé ! Êtes-vous bien inscrits sur le centre de Nanterre ? Votre email : '. $_POST['email'] .'</h2>';
     session_destroy();
-    header("Location: ../connexion.php#tologin");
+    //header("Location: ../connexion.php#tologin");
 }
 
 ?>

@@ -38,28 +38,29 @@ if (!isset($_SESSION)){
 </div>
 
 
-<div class="container-shop-index">
-<h5 align="center">Recommendations</h5><br>
-    <div class="row">
-          <?php
-          
-          require('./productDisplay.php');
-          try{
-              require("./db_related/config.php");
-          }catch(Exception $e) {
-              throw new Exception("No config ! Incorrect file path or the file is corrupted");
-          }
-          $bdd = db_local::getInstance();
-          $minid = 0;
-          $requete = $bdd->prepare("SELECT * from listeproduits ORDER BY RAND() LIMIT 3");
-          $requete->execute();
-          $listproducts = $requete->fetchAll();
-          $products = new Product($listproducts);
-          $products->display($listproducts);
-          ?>
-    </div>
-</div>
-          
+
+  <div class="container-shop-index">
+  <h5 align="center">Recommendations</h5><br>
+      <div class="row">
+            <?php
+            
+            require('./productDisplay.php');
+            try{
+                require("./db_related/config.php");
+            }catch(Exception $e) {
+                throw new Exception("No config ! Incorrect file path or the file is corrupted");
+            }
+            $bdd = db_local::getInstance();
+            $minid = 0;
+            $requete = $bdd->prepare("SELECT * from listeproduits ORDER BY RAND() LIMIT 3");
+            $requete->execute();
+            $listproducts = $requete->fetchAll();
+            $products = new Product($listproducts);
+            $products->display($listproducts);
+            ?>
+      </div>
+  </div>
+     
 
 
 </html>

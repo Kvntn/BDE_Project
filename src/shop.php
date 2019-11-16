@@ -9,11 +9,13 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <body>
   <div class="album py-5 bg-light">
+  <br>
     <div class="container-shop">
       <form action="" class="text-justify" method="get">
         <button name="button" class="btn btn-dark" type="submit" value="previous"><i class="fas fa-arrow-left"></i></button>
         <button name="button" class="btn btn-dark" type="submit" value="next"><i class="fas fa-arrow-right"></i></button>
-      </form> 
+      </form>
+      <br> 
     <div class="row">
           <?php
           
