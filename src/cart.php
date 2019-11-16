@@ -12,7 +12,7 @@
         throw new Exception("No config ! Incorrect file path or the file is corrupted");
     }
 
-    if(!$_SESSION['cart']){
+    if(@!($_SESSION['cart'])){
         $_SESSION['cart'] = array();
     }
 
@@ -72,7 +72,7 @@
               <tbody>
 
                 <?php 
-                  if($_SESSION['cart'] != null)
+                  if(($_SESSION['cart']))
                     $cartDisplay->display($cart);
                   else 
                     echo '<td class="border-0 align-middle"><strong>Votre panier est vide.</strong></td>';
@@ -85,9 +85,14 @@
           <!-- End -->
         </div>
       </div>
+      <?php 
+      if ($_SESSION['cart']){
+      echo '
       <form action="validerlacommande.php" method="post">
         <button input type="submit" type="button" class="btn btn-light button-purchase">Valider la commande</button>
-      </form>
+      </form>';
+      }
+      ?>
     </div>
   </div>
 </div>

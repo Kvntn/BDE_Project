@@ -7,7 +7,6 @@
     include("footer.php");
 
     unset($_SESSION['cart'][$_GET['key']]);
-    var_dump($_SESSION['cart']);
 
     echo '<script>document.location.replace("./cart.php")</script>';
 ?>
