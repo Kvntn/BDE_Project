@@ -1,5 +1,9 @@
 <?php
 
+    if (!isset($_SESSION)){
+    session_start();
+  }
+
 echo "<br><br><br><br><br>";
 /////////////////////////////////////
 // UPDATES USER ENTRIES IN DATABASE//
@@ -111,7 +115,8 @@ $requete->closeCursor();
 //Refresh password for this session
 $_SESSION['motDePasse'] = $_POST['newpw'];
 
-header("Location: ../profile_edit.php");
+//echo '<script>document.location.replace("index.php");
+     //   </script>';
 
 ?>
 
