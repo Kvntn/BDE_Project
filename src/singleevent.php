@@ -97,7 +97,8 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * from commentairesevenements WHERE IDEvenement = $idevent");
+          $requete = $bdd->prepare("SELECT * from commentairesevenements WHERE IDEvenement = $idevent;
+                                    SELECT COUNT(*) FROM likescommentaires WHERE IDEvenement = $idevent");
           $requete->execute();
           $listcom = $requete->fetchAll();
           $coms = new Commentaires($listcom);
