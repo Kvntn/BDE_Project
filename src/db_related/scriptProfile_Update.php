@@ -65,6 +65,14 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
                         PhotoDeProfil = :pdp,
                         IDCentre = :centre
                         WHERE IDUtilisateur=:id ");
+
+                $requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
+                $requete->bindValue(':id', $id, PDO::PARAM_INT);
+                $requete->bindValue(':pdp', $_SESSION['Email'], PDO::PARAM_STR);
+                $requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
+
+                $requete->execute();
+                $requete->closeCursor();
             }
             else
             {
@@ -81,18 +89,6 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
         echo "<h1>La photo de profil est trop grosse</h1>";
     }
 }
-
-
-
-
-$requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
-$requete->bindValue(':id', $id, PDO::PARAM_INT);
-$requete->bindValue(':pdp', $_SESSION['Email'], PDO::PARAM_STR);
-$requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
-
-$requete->execute();
-$requete->closeCursor();
-
 
 
 //---------UPDATE FOR LOCAL DATABASE (NANTERRE) IF REGISTERED CENTER IS NANTERRE--------//
