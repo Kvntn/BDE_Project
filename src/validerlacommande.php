@@ -39,11 +39,45 @@
     }
     unset($_SESSION['cart']);
     
+
+    //Send mail to student
+
     $header="MIME-Version: 1.0\r\n";
     $header.='From: teamg2trks@gmail.com \r\n';
     $header.='Content-Type:text/html;charset="utf-8"'."\n";
     $header.='Content-Transfert-Encocdin: 8bit';
+    $mail=$_SESSION['Email'];
+    $subject='Commande';
+    $msg='Nous avons bien pris en compte votre commande. Vous pouvez venir la recuperer au bureau du BDE.';
+    $send='
+    Objet : '.$subject.'
+    '.$msg;
+    mail($mail,$subject,$send, $header);
+  
     
+    //Send mail to BDE
+
+    $command = $bdd->prepare("SELECT NomProduit,Quantite FROM produits INNER JOIN commande ON commande.IDCommande = produits.IDCommande WHERE IDUtilisateur = $pid");
+    $command->execute();
+    $display = $command->fetchAll();
+    $command->closeCursor();
+    $nb = count($display)-1;
+    $nomProduit = $display[$nb]['NomProduit'];
+    $quantite = $display[$nb]['Quantite'];
+    $header="MIME-Version: 1.0\r\n";
+    $header.='From: teamg2trks@gmail.com \r\n';
+    $header.='Content-Type:text/html;charset="utf-8"'."\n";
+    $header.='Content-Transfert-Encocdin: 8bit';
+    $fname=$_SESSION['firstname'];
+    $lname=$_SESSION['name'];
+    $subject='Commande';
+    $msg=$fname.' '.$lname.' a commandé '.$nomProduit.' en '.$quantite.' examplaire';
+    $send='
+    Objet : '.$subject.'
+    '.$msg;
+    mail("teamg2trks@gmail.com",$subject,$send, $header);
+
+
     //keep this line at end of file
     echo '
         <script>
