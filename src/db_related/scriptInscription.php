@@ -88,12 +88,12 @@ $tmp[1] = ucfirst($tmp[1]);
 
 //Writing in national databse
 $requete = $bdd->prepare("INSERT INTO utilisateurs(IDUtilisateur,Email, Nom, Prenom, MotDePasse, Statut, PhotoDeProfil, IDCentre) 
-                          VALUES (null,:email,:mdp, :xname, :fname, :stat,:pdp,:centre) ");
+                          VALUES (null,:email,:xname,:fname,:mdp, :stat,:pdp,:centre) ");
 
 
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-$requete->bindValue(':xname', $tmp[0], PDO::PARAM_STR);
-$requete->bindValue(':fname', $tmp[1], PDO::PARAM_STR);
+$requete->bindValue(':fname', $tmp[0], PDO::PARAM_STR);
+$requete->bindValue(':xname', $tmp[1], PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
 $requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
 $requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
@@ -117,14 +117,14 @@ if($_POST['centre'] != 1){
 $bdd = db_local::getInstance();
 
 $LocalRequest = $bdd->prepare("INSERT INTO utilisateurs(IDUtilisateur, Email, Nom, Prenom, MotDePasse, Statut, PhotoDeProfil) 
-                        VALUES (null,:email,:mdp,:xname, :fname, :stat,:pdp)");
+                        VALUES (null,:email,:xname,:fname,:mdp,:stat,:pdp)");
 
 $tmp = str_replace('@viacesi.fr', '', $_POST['email']);
 $tmp = explode('.', $tmp);
 
 $LocalRequest->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-$LocalRequest->bindValue(':xname', $tmp[0], PDO::PARAM_STR);
-$LocalRequest->bindValue(':fname', $tmp[1], PDO::PARAM_STR);
+$LocalRequest->bindValue(':fname', $tmp[0], PDO::PARAM_STR);
+$LocalRequest->bindValue(':xname', $tmp[1], PDO::PARAM_STR);
 $LocalRequest->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
 $LocalRequest->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
 $LocalRequest->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
