@@ -1,4 +1,9 @@
 <?php
+
+include("head.php");
+include("footer.php");
+include("nav.php");
+
     if (!isset($_SESSION))
         session_start();
 

@@ -77,16 +77,21 @@ if (!isset($_SESSION)){
           <small><?php echo $event['Date']?></small><br>
           <button type="button" class="btn btn-default btn-lg">
 
-          <a href="likeEvent.php?id=<?php echo $event['IDEvenement']?>"><span class="badge badge-light"><?php echo $count['COUNT(*)'];?><i class="fas fa-heart"></i></span></a>
+          
           </button>
-          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
+          
           <?php
+            if (@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2 || @$_SESSION['Statut'] == 3){
+            echo '
+            <a href="likeEvent.php?id='.$event['IDEvenement'].'"><span class="badge badge-light">'.$count['COUNT(*)'].'<i class="fas fa-heart"></i></span></a>';
+            }
             if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
               echo 
               //<a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
               '<a class="btn btn-outline-danger" href="page_report.php" role="button">Signaler</a>';
             }
           ?>
+          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
         </p>
       </div>
 
