@@ -8,7 +8,7 @@
         throw new Exception("No config ! Incorrect file path or the file is corrupted");
     }
 
-    $pid = $_SESSION['IDutilisateur'];
+    $pid = $_SESSION['IDUtilisateur'];
     $prixtotal = 0;
     foreach($_SESSION['cart'] as $rows => $key){
         $prixtotal = $prixtotal + ($key['PrixTotal']);
@@ -17,7 +17,7 @@
     $bdd = db_local::getInstance();
 
 
-    $requete = $bdd->prepare("INSERT INTO commande(`Prix_Total`, `IDUtilisateur`) VALUES ($prixtotal, 11)");
+    $requete = $bdd->prepare("INSERT INTO commande(`Prix_Total`, `IDUtilisateur`) VALUES ($prixtotal, $pid)");
     $requete->execute();
     $requete->closeCursor();
     $tmp = $bdd->prepare("SELECT `IDCommande` FROM commande WHERE IDUtilisateur=11 AND `IDCommande`=LAST_INSERT_ID();");
@@ -37,12 +37,17 @@
         $requete->closeCursor();
     }
     unset($_SESSION['cart']);
+    
     $header="MIME-Version: 1.0\r\n";
     $header.='From: teamg2trks@gmail.com \r\n';
     $header.='Content-Type:text/html;charset="utf-8"'."\n";
     $header.='Content-Transfert-Encocdin: 8bit';
-
-    $msg=$getidcommmand;
-    var_dump($msg);
+    
+    //keep this line at end of file
+    echo '
+        <script>
+            alert("Votre commande a bien été prise en compte ! Un mail sera envoyé pour convenir de votre transaction avec un personnel du bde.");
+            //header("Location : ./cart.php");
+        </script>';
 
 ?>
