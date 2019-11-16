@@ -38,9 +38,10 @@ $_POST['newpw'] = md5($_POST['newpw']);
 
 $bdd = db_national::getInstance();
 
-$_POST['stat'] = (int)$_POST['stat'];
+//$_POST['stat'] = (int)$_POST['stat'];
 $_POST['centre'] = (int)$_POST['centre'];
-$id = (int)$_SESSION['id'];
+$id =$_SESSION['IDUtilisateur'];
+var_dump($_SESSION);
 
 if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
 {
@@ -51,7 +52,7 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
         $extentionUpload = strtolower(substr(strrchr($_FILES['Photo']['name'], '.'), 1));
         if(in_array($extentionUpload, $extentionsValides))
         {
-            $repertory_server = "../resources/images/Photo_Profil/".$_SESSION['email'].".".$extentionUpload;
+            $repertory_server = "../resources/images/Photo_Profil/".$_SESSION['Email'].".".$extentionUpload;
             $resultat = move_uploaded_file($_FILES['Photo']['tmp_name'], $repertory_server);
             if($resultat)
             {
@@ -59,7 +60,7 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
                         MotDePasse = :mdp, 
                         PhotoDeProfil = :pdp,
                         IDCentre = :centre
-                        WHERE id=:id ");
+                        WHERE IDUtilisateur=:id ");
             }
             else
             {
@@ -81,8 +82,8 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
 
 
 $requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
-$requete->bindValue(':id', $id, PDO::PARAM_STR);
-$requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
+$requete->bindValue(':id', $id, PDO::PARAM_INT);
+$requete->bindValue(':pdp', $_SESSION['Email'], PDO::PARAM_STR);
 $requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
 
 $requete->execute();
@@ -98,11 +99,11 @@ if($_POST['centre'] != 1)
 
 $bdd = db_local::getInstance();
 
-$requete = $bdd->prepare("UPDATE utilisateurs SET MotDePasse = :mdp, Statut = :stat, PhotoDeProfil = :pdp WHERE id=:id");
+$requete = $bdd->prepare("UPDATE utilisateurs SET MotDePasse = :mdp, PhotoDeProfil = :pdp WHERE IDUtilisateur=:id");
 
 $requete->bindValue(':id', $id, PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
-$requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
+$requete->bindValue(':pdp', $_SESSION['Email'], PDO::PARAM_STR);
 
 $requete->execute();
 $requete->closeCursor();
