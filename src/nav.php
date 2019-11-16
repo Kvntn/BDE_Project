@@ -42,6 +42,12 @@
                 if(!isset($_COOKIE['firstname']))
                     $_COOKIE['firstname'] = 'user';
 
+                if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+                  echo "
+                  <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
+                  <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";
+                }
+                
                 if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                     $fname = $_COOKIE['firstname'];
                     echo "
@@ -56,11 +62,7 @@
                     <a class=\"dropdown-item\" href=\"connexion.php#tologin\">Connexion</a>";
                 }
                 
-                if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
-                  echo "
-                  <a class=\"dropdown-item\" href=\"add_prod.php\">Ajouter un produit</a>
-                  <a class=\"dropdown-item\" href=\"add_event.php\">Ajouter un évènement</a>";
-                }
+                
             ?>
         </div>
       </li>
