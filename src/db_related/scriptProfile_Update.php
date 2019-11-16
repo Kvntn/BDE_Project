@@ -32,9 +32,9 @@ include "../nav.php";
 
 
 if($_POST['conf_newpw'] != $_POST['newpw']){
-    echo "<h1>Les mots de passe ne correspondent pas</h1>";
-    sleep(3);
-    header("Location: ../connexion.php#toregister");
+    echo "<script>alert(\"Vos mots de passe ne sont pas les même !\");</script>";
+    echo '<script> history.go(-1); </script>';
+    die();
 }
     
 $_POST['newpw'] = md5($_POST['newpw']);
