@@ -9,15 +9,17 @@ if (!isset($_SESSION)){
             throw new Exception("No config ! Incorrect file path or the file is corrupted");
         }
 
-        var_dump($_GET);
         $id = $_GET['id'];
 
-        $iduser = $_SESSION['IDutilisateur'];
+        $iduser = $_SESSION['IDUtilisateur'];
 
-        var_dump($_SESSION);
+       
 
         $bdd = db_local::getInstance();
-        $requete = $bdd->prepare("INSERT INTO `likescommentaires`(`IDUtilisateur`, `IDCommentaire`) VALUES ($iduser,$id)");
+        $requete = $bdd->prepare("INSERT INTO `likesevenements`(`IDUtilisateur`, `IDEvenement`) VALUES ($iduser,$id)");
         $requete->execute();
         $requete->closeCursor();
+
+        echo '<script>alert("Vous avez liké l\'évènement");
+        history.go(-1);</script>';
 ?>
