@@ -22,7 +22,7 @@ class Event
 		<small>',$key['Date'],'</small>
         <small>',$key['Prix'],'€</small>
         </div>
-        <p class="mb-1">',$key['Description'],'</p></a>';
+        </a>';
 		}
 	}
 }
