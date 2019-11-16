@@ -20,7 +20,7 @@ if (!isset($_SESSION)){
 
     $requete->bindValue(':contenu', $_POST['name_com'], PDO::PARAM_STR);
     $requete->bindValue(':IDEvent', $_SESSION['IDEvenement'], PDO::PARAM_STR);
-    $requete->bindValue(':IDUser', '1', PDO::PARAM_STR);
+    $requete->bindValue(':IDUser', $_SESSION['IDUtilisateur'], PDO::PARAM_STR);
 
     $requete->execute();
     $requete->closeCursor();
