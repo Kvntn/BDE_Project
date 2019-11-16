@@ -20,7 +20,7 @@
     $requete = $bdd->prepare("INSERT INTO commande(`Prix_Total`, `IDUtilisateur`) VALUES ($prixtotal, $pid)");
     $requete->execute();
     $requete->closeCursor();
-    $tmp = $bdd->prepare("SELECT `IDCommande` FROM commande WHERE IDUtilisateur=11 AND `IDCommande`=LAST_INSERT_ID();");
+    $tmp = $bdd->prepare("SELECT `IDCommande` FROM commande WHERE IDUtilisateur=$pid AND `IDCommande`=LAST_INSERT_ID();");
     $tmp->execute();
     $getidcommmand = $tmp->fetch();
 
@@ -32,7 +32,8 @@
         $tquantity = $key['Quantite'];
         $tprixtotal = $key['PrixTotal'];
 
-        $requete = $bdd->prepare("INSERT INTO `produits`(`NomProduit`, `Description`, `Prix`, `PhotoProduit`, `Quantite`, `Prix_Total`, `IDCommande`) VALUES ('$tnom', '$tdesc', $tprix, '$tphoto', $tquantity, $tprixtotal, ".$getidcommmand['IDCommande'].")");
+        $requete = $bdd->prepare("INSERT INTO `produits`(`NomProduit`, `Description`, `Prix`, `PhotoProduit`, `Quantite`, `Prix_Total`, `IDCommande`) 
+        VALUES ('$tnom', '$tdesc', $tprix, '$tphoto', $tquantity, $tprixtotal, ".$getidcommmand['IDCommande'].")");
         $requete->execute();
         $requete->closeCursor();
     }
