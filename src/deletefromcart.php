@@ -9,5 +9,5 @@
     unset($_SESSION['cart'][$_GET['key']]);
     var_dump($_SESSION['cart']);
 
-    echo '<script>document.location.replace("./cart.php")</script>';
+    echo '<script>document.window.location("./cart.php");</script>';
 ?>

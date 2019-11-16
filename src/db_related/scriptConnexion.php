@@ -8,9 +8,7 @@ try{
     throw new Exception("No config ! Incorrect file path or the file is corrupted");
 }
 
-$bdd = db_national::getInstance();
-
-$email = $_POST['email'];
+$bdd = db_local::getInstance();
 
 // md5 hash for password security (unidirectional since it is not an "encryption" and you cant "decrypt" it (unless you wanna waste all your lifetime))
 $motDePasse = md5($_POST['motDePasse']); 
@@ -18,43 +16,40 @@ $motDePasse = md5($_POST['motDePasse']);
 // Requête préparée pour empêcher les injections SQL
 $requete = $bdd->prepare("SELECT * FROM utilisateurs WHERE email=:email AND MotDePasse=:motDePasse");
 
-$requete->bindValue(':email', $email, PDO::PARAM_STR);
+$requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $requete->bindValue(':motDePasse', $motDePasse, PDO::PARAM_STR);
 
 $requete->execute();
 $arr = $requete->fetchAll();
 $requete->closeCursor();
 
-var_dump($arr);
 
 if ($arr != NULL) {
         
-        $tmp = str_replace('@viacesi.fr', '', $email);
-        $tmp = explode('.', $tmp);
+    $tmp = str_replace('@viacesi.fr', '', $_POST['email']);
+    $tmp = explode('.', $tmp);
 
-        $tmp[0] = ucfirst($tmp[0]);
-        $tmp[1] = ucfirst($tmp[1]);
-        $_SESSION = $arr[0];
-        $_SESSION['login'] = true;
-        $_SESSION['firstname'] = $tmp[0];
-        $_SESSION['name'] = $tmp[1];
+    foreach($tmp as $arr_ => $val)
+        $val = ucfirst($val);
 
-        echo "Logged in as $tmp[1] $tmp[0] !";
+    $_SESSION               = $arr[0];
+    $_SESSION['login']      = true;
+    $_SESSION['firstname']  = $tmp[0];
+    $_SESSION['name']       = $tmp[1];
 
-        setcookie('email', $email, time() + 365*24*3600, "/", null, false, true); 
-        @setcookie('name', $tmp[1], time() + 365*24*3600, "/", null, false, true); 
-        setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
-        setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true); 
-        setcookie('statut', $_SESSION['Statut'], time() + 365*24*3600, "/", null, false, true); 
+    echo "Logged in as $tmp[1] $tmp[0] !";
 
-        var_dump($_COOKIE);
-        var_dump($_SESSION);
+    setcookie('email', $_POST['email'], time() + 365*24*3600, "/", null, false, true);
+    @setcookie('name', $tmp[1], time() + 365*24*3600, "/", null, false, true);
+    setcookie('pw', $_POST['motDePasse'], time() + 365*24*3600, "/", null, false, true);
+    setcookie('firstname', $tmp[0], time() + 365*24*3600, "/", null, false, true);
+    setcookie('statut', $_SESSION['Statut'], time() + 365*24*3600, "/", null, false, true);
 
-        header('Location: ../index.php');
+    header('Location: ../index.php');
+    
 }else{
-    echo '<h2>Unknown login ! Try again, you entered : '.$email.'</h2>';
+    echo '<h2>Utilisateur non trouvé ! Êtes-vous bien inscrits sur le centre de Nanterre ? Votre email : '. $_POST['email'] .'</h2>';
     session_destroy();
-    sleep(3);
     header("Location: ../connexion.php#tologin");
 }
 

@@ -88,12 +88,10 @@ $tmp[0] = ucfirst($tmp[0]);
 $tmp[1] = ucfirst($tmp[1]);
 
 //Writing in national databse
-$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur,Nom,Prenom,Email, MotDePasse, Statut, PhotoDeProfil, IDCentre) 
-                          VALUES (null,:lname,:fname,:email,:mdp,:stat,:pdp,:centre) ");
+$requete = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur,Email, MotDePasse, Statut, PhotoDeProfil, IDCentre) 
+                          VALUES (null,:email,:mdp,:stat,:pdp,:centre) ");
 
 
-$requete->bindValue(':lname', $tmp[1], PDO::PARAM_STR);
-$requete->bindValue(':fname', $tmp[0], PDO::PARAM_STR);
 $requete->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $requete->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
 $requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
@@ -115,14 +113,11 @@ if($_POST['centre'] != 1){
     die();
 }
 
-
 $bdd = db_local::getInstance();
 
-$LocalRequest = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Nom, Prenom, Email, MotDePasse, Statut, PhotoDeProfil) 
-                        VALUES (null,:lname,:fname,:email,:mdp,:stat,:pdp)");
+$LocalRequest = $bdd->prepare("INSERT INTO utilisateurs(IDutilisateur, Email, MotDePasse, Statut, PhotoDeProfil) 
+                        VALUES (null,:email,:mdp,:stat,:pdp)");
 
-$LocalRequest->bindValue(':lname', $tmp[1], PDO::PARAM_STR);
-$LocalRequest->bindValue(':fname', $tmp[0], PDO::PARAM_STR);
 $LocalRequest->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 $LocalRequest->bindValue(':mdp', $_POST['motDePasse'], PDO::PARAM_STR);
 $LocalRequest->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
@@ -130,15 +125,6 @@ $LocalRequest->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
 
 $LocalRequest->execute();
 $LocalRequest->closeCursor();
-
-//Linking shopcart with user
-$requete = $bdd->prepare("UPDATE utilisateurs SET IDPanier = IDUtilisateur");
-$requete->execute();
-$requete->closeCursor();
-
-$requete = $bdd->prepare("UPDATE panier SET IDutilisateur = (SELECT IDPanier FROM utilisateurs WHERE panier.IDPanier = IDPanier)");
-$requete->execute();
-$requete->closeCursor();
 
 echo '<script> document.location.replace("../connexion.php#tologin"); </script>'; 
 ?>
