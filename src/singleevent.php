@@ -106,7 +106,7 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * FROM commentairesevenements INNER JOIN utilisateurs ON commentairesevenements.IDUtilisateur = utilisateurs.IDUtilisateur ;");
+          $requete = $bdd->prepare("SELECT * FROM commentairesevenements INNER JOIN utilisateurs ON commentairesevenements.IDUtilisateur = utilisateurs.IDUtilisateur WHERE IDEvenement = $idevent;");
           $requete->execute();
           $listcom = $requete->fetchAll();
           $coms = new Commentaires($listcom);
@@ -128,7 +128,7 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * FROM Photos INNER JOIN utilisateurs ON Photos.IDUtilisateur = utilisateurs.IDUtilisateur ;");
+          $requete = $bdd->prepare("SELECT * FROM Photos INNER JOIN utilisateurs ON Photos.IDUtilisateur = utilisateurs.IDUtilisateur WHERE IDEvenement = $idevent;");
           $requete->execute();
           $listimg = $requete->fetchAll();
           $coms = new Image($listimg);

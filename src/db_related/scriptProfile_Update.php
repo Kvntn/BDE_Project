@@ -115,8 +115,8 @@ $requete->closeCursor();
 //Refresh password for this session
 $_SESSION['motDePasse'] = $_POST['newpw'];
 
-//echo '<script>document.location.replace("index.php");
-     //   </script>';
+echo '<script>document.location.replace("../index.php");
+       </script>';
 
 ?>
 
