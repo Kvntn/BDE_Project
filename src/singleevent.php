@@ -157,7 +157,7 @@ if (!isset($_SESSION)){
 
         <div class="form-label-group">
             <label>Photo</label>
-            <input type="post" name="name_img" class="form-control" placeholder="Veuillez inserer un lien provenant d'un navigateur." required>
+            <input type="post" name="name_img" class="form-control" placeholder="Veuillez inserer un lien provenant d'un navigateur. Exemple : NoelShack.com" required>
         </div>
           <br>
 
