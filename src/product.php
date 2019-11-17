@@ -50,7 +50,6 @@ if (!isset($_SESSION)){
                 <?php
                 if(@$_SESSION['Statut'] == 1) {
                     echo '<a class="btn btn-outline-danger" href="./db_related/script_delete_produit.php?id='.$_GET['id'].'" role="button">Supprimer</a>';
-                    var_dump($_GET['id']);
                 }
                 ?>
             </form>

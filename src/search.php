@@ -1,7 +1,7 @@
 
 <div class="autocomplete">
     <form class="form-inline my-2 my-md-0" autocomplete="off" method="post" action="./shop">
-      <button type="submit"><i class="fa fa-search"></i></button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button>
       <input class="form-control mr-sm-2" type="post" placeholder="Recherhe..." aria-label="Search" id="myInput" type="text" name="search">
     </form>
 </div>

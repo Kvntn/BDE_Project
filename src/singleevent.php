@@ -84,13 +84,20 @@ if (!isset($_SESSION)){
             if (@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2 || @$_SESSION['Statut'] == 3){
             echo '
             <a href="likeEvent.php?id='.$event['IDEvenement'].'"><span class="badge badge-light">'.$count['COUNT(*)'].'<i class="fas fa-heart"></i></span></a>';
-            }
-            if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+            }?>
+
+            <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
+
+            <?php
+            if(@$_SESSION['Statut'] == 2) {
               echo 
               '<a class="btn btn-outline-danger" href="page_report.php" role="button">Signaler</a>';
             }
+            if(@$_SESSION['Statut'] == 1) {
+              echo '<a class="btn btn-outline-danger" href="./db_related/script_delete_event.php?id='.$_GET['id'].'" role="button">Supprimer</a>';
+            }
           ?>
-          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
+          
         </p>
       </div>
 
