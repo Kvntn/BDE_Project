@@ -47,13 +47,18 @@ if (!isset($_SESSION)){
           <a class="nav-link" href="#p3" data-toggle="tab">Photos de l'événement</a>
         </li>
         
-        <li class="nav-item">
-          <a class="nav-link" href="#p4" data-toggle="tab">Poster un commentaire</a>
-        </li>
+        <?php 
+        if(isset($_SESSION['login'])) {
+          echo '
+            <li class="nav-item">
+              <a class="nav-link" href="#p4" data-toggle="tab">Poster un commentaire</a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#p5" data-toggle="tab">Poster une photo</a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#p5" data-toggle="tab">Poster une photo</a>
+            </li>';
+        }
+        ?>
 
         <?php
             if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
@@ -144,19 +149,25 @@ if (!isset($_SESSION)){
       </div>
       </div>
 
-      <div class="card-body tab-pane" id="p4">
-      <form class="form" method="post" action="post_com.php">
+     
+        <div class="card-body tab-pane" id="p4">
+        <form class="form" method="post" action="post_com.php">
 
-        <div class="form-label-group">
-            <label>Commentaire</label>
-            <input type="post" name="name_com" class="form-control" required>
-        </div>
-            <br>
+          <div class="form-label-group">
+              <label>Commentaire</label>
+              <input type="post" name="name_com" class="form-control" required>
+          </div>
+              <br>
 
-        <button class="btn btn-secondary" name="add_com" type="submit">Ajouter le commentaire</button>
+          
 
-      </form>
-      </div>
+          <button class="btn btn-secondary" name="add_com" type="submit">Ajouter le commentaire</button>
+
+        </form>
+        </div> 
+      
+
+
 
       <div class="card-body tab-pane" id="p5">
       <form class="form" method="post" action="post_img.php">

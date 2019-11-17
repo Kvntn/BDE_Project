@@ -99,6 +99,7 @@ $requete->bindValue(':stat', $_POST['stat'], PDO::PARAM_INT);
 $requete->bindValue(':pdp', $_POST['Photo'], PDO::PARAM_STR);
 $requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
 
+
 $requete->execute();
 $requete->closeCursor();
 
