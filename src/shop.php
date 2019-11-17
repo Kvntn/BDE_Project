@@ -43,11 +43,24 @@
               break;
           }
         }
+
+        if (isset($_POST['search']))
+        {
+          $mot = $_POST['search'];
+          $requete = $bdd->prepare("SELECT * from listeproduits WHERE Categorie LIKE '%$mot%'");
+          $requete->execute();
+          $listproducts = $requete->fetchAll();
+          $products = new Product($listproducts);
+          $products->display($listproducts);
+        }
+        else
+        {
           $requete = $bdd->prepare("SELECT * from listeproduits WHERE IDProduit > $minid LIMIT 6");
           $requete->execute();
           $listproducts = $requete->fetchAll();
           $products = new Product($listproducts);
           $products->display($listproducts);
+        }
           ?>
     </div>
       <form action="" class="text-justify" method="get">
