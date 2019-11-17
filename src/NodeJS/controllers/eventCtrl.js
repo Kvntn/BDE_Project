@@ -14,12 +14,6 @@ var con = sql.createConnection({
 });
 let exist = true;
 
-function twoDigits(date) {
-    if (0 <= date && date < 10) return "0" + date.toString();
-    if (-10 < date && date < 0) return "-0" + (-1 * date).toString();
-    return d.toString();
-}
-
 module.exports = {
 
     test: (req, res) => {
@@ -39,15 +33,6 @@ module.exports = {
         var desc = req.body.desc;
         var prix = req.body.prix;
         var date = req.body.year +"-"+ req.body.month +"-"+ req.body.day;
-        //date = new Date(req.body.year, req.body.month, req.body.day);
-        // date = () => {
-        //     return this.getUTCFullYear() + "-" + 
-        //     twoDigits(1 + this.getUTCMonth()) + "-" + 
-        //     twoDigits(this.getUTCDate()) + " " + 
-        //     twoDigits(this.getUTCHours()) + ":" + 
-        //     twoDigits(this.getUTCMinutes()) + ":" + 
-        //     twoDigits(this.getUTCSeconds());
-        // }
 
         con.query("SELECT NomEvenement FROM evenements WHERE NomEvenement = '" + name + "'", (err, result, fields) => {
             if (err) throw err;

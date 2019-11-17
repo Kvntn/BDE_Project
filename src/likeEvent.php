@@ -16,27 +16,26 @@ if (!isset($_SESSION)){
 
         $bdd = db_local::getInstance();
 
-        
-
-        $rq = $bdd->prepare("SELECT * FROM `likesevenements` WHERE IDUtilisateur = :iduser");
+        $rq = $bdd->prepare("SELECT * FROM `likesevenements` WHERE IDUtilisateur = :iduser AND IDEvenement = :ide");
 
         $rq->bindValue(':iduser', $_SESSION['IDUtilisateur'], PDO::PARAM_STR);
+        $rq->bindValue(':ide', $_SESSION['IDEvenement'], PDO::PARAM_STR);
 
         $rq->execute();
-        if($rq == NULL) {
-       
+        $arr = $rq->fetch();
 
-        
-        $requete = $bdd->prepare("INSERT INTO `likesevenements`(`IDUtilisateur`, `IDEvenement`) VALUES (:iduser,:id)");
+        if($arr == NULL) {
+            
+            $requete = $bdd->prepare("INSERT INTO `likesevenements`(`IDUtilisateur`, `IDEvenement`) VALUES (:iduser,:id)");
 
-        $requete->bindValue(':iduser', $_SESSION['IDUtilisateur'], PDO::PARAM_STR);
-        $requete->bindValue(':id', $_GET['id'], PDO::PARAM_STR);
+            $requete->bindValue(':iduser', $_SESSION['IDUtilisateur'], PDO::PARAM_STR);
+            $requete->bindValue(':id', $_GET['id'], PDO::PARAM_STR);
 
-        $requete->execute();
-        $requete->closeCursor();
+            $requete->execute();
+            $requete->closeCursor();
 
-        echo '<script>alert("Vous avez liké l\'évènement");
-        history.go(-1);</script>';
+            echo '<script>alert("Vous avez liké l\'évènement");
+            history.go(-1);</script>';
 
     }
     else {
