@@ -87,7 +87,6 @@ if (!isset($_SESSION)){
             }
             if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
               echo 
-              //<a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
               '<a class="btn btn-outline-danger" href="page_report.php" role="button">Signaler</a>';
             }
           ?>
