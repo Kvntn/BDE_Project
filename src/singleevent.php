@@ -116,7 +116,7 @@ if (!isset($_SESSION)){
           $requete->execute();
           $listcom = $requete->fetchAll();
           $coms = new Commentaires($listcom);
-          $coms->display($listcom);
+          $coms->display($listcom);        
       ?>
 
       </div>
