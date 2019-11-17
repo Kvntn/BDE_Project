@@ -32,9 +32,9 @@ include "../nav.php";
 
 
 if($_POST['conf_newpw'] != $_POST['newpw']){
-    echo "<h1>Les mots de passe ne correspondent pas</h1>";
-    sleep(3);
-    header("Location: ../connexion.php#toregister");
+    echo "<script>alert(\"Vos mots de passe ne sont pas les même !\");</script>";
+    echo '<script> history.go(-1); </script>';
+    die();
 }
     
 $_POST['newpw'] = md5($_POST['newpw']);
@@ -65,6 +65,14 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
                         PhotoDeProfil = :pdp,
                         IDCentre = :centre
                         WHERE IDUtilisateur=:id ");
+
+                $requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
+                $requete->bindValue(':id', $id, PDO::PARAM_INT);
+                $requete->bindValue(':pdp', $_SESSION['Email'], PDO::PARAM_STR);
+                $requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
+
+                $requete->execute();
+                $requete->closeCursor();
             }
             else
             {
@@ -81,18 +89,6 @@ if(isset($_FILES['Photo']) AND !empty($_FILES['Photo']['name']))
         echo "<h1>La photo de profil est trop grosse</h1>";
     }
 }
-
-
-
-
-$requete->bindValue(':mdp', $_POST['newpw'], PDO::PARAM_STR);
-$requete->bindValue(':id', $id, PDO::PARAM_INT);
-$requete->bindValue(':pdp', $_SESSION['Email'], PDO::PARAM_STR);
-$requete->bindValue(':centre', $_POST['centre'], PDO::PARAM_INT);
-
-$requete->execute();
-$requete->closeCursor();
-
 
 
 //---------UPDATE FOR LOCAL DATABASE (NANTERRE) IF REGISTERED CENTER IS NANTERRE--------//
@@ -115,8 +111,8 @@ $requete->closeCursor();
 //Refresh password for this session
 $_SESSION['motDePasse'] = $_POST['newpw'];
 
-//echo '<script>document.location.replace("index.php");
-     //   </script>';
+echo '<script>document.location.replace("../index.php");
+       </script>';
 
 ?>
 

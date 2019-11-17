@@ -77,16 +77,27 @@ if (!isset($_SESSION)){
           <small><?php echo $event['Date']?></small><br>
           <button type="button" class="btn btn-default btn-lg">
 
-          <a href="likeEvent.php?id=<?php echo $event['IDEvenement']?>"><span class="badge badge-light"><?php echo $count['COUNT(*)'];?><i class="fas fa-heart"></i></span></a>
+          
           </button>
-          <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
+          
           <?php
-            if(@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2) {
+            if (@$_SESSION['Statut'] == 1 || @$_SESSION['Statut'] == 2 || @$_SESSION['Statut'] == 3){
+            echo '
+            <a href="likeEvent.php?id='.$event['IDEvenement'].'"><span class="badge badge-light">'.$count['COUNT(*)'].'<i class="fas fa-heart"></i></span></a>';
+            }?>
+
+            <a class="btn btn-outline-warning" href="./db_related/add_participant.php" role="button">Intéressé</a>
+
+            <?php
+            if(@$_SESSION['Statut'] == 2) {
               echo 
-              //<a class="btn btn-outline-info" href="list_participants" role="button">Acceder à la liste des participants</a>
               '<a class="btn btn-outline-danger" href="page_report.php" role="button">Signaler</a>';
             }
+            if(@$_SESSION['Statut'] == 1) {
+              echo '<a class="btn btn-outline-danger" href="./db_related/script_delete_event.php?id='.$_GET['id'].'" role="button">Supprimer</a>';
+            }
           ?>
+          
         </p>
       </div>
 
@@ -101,11 +112,11 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * FROM commentairesevenements INNER JOIN utilisateurs ON commentairesevenements.IDUtilisateur = utilisateurs.IDUtilisateur ;");
+          $requete = $bdd->prepare("SELECT * FROM commentairesevenements INNER JOIN utilisateurs ON commentairesevenements.IDUtilisateur = utilisateurs.IDUtilisateur WHERE IDEvenement = $idevent;");
           $requete->execute();
           $listcom = $requete->fetchAll();
           $coms = new Commentaires($listcom);
-          $coms->display($listcom);
+          $coms->display($listcom);        
       ?>
 
       </div>
@@ -123,7 +134,7 @@ if (!isset($_SESSION)){
           }
           $bdd = db_local::getInstance();
           $idevent = $_SESSION['IDEvenement'];
-          $requete = $bdd->prepare("SELECT * from photos WHERE IDEvenement = $idevent");
+          $requete = $bdd->prepare("SELECT * FROM Photos INNER JOIN utilisateurs ON Photos.IDUtilisateur = utilisateurs.IDUtilisateur WHERE IDEvenement = $idevent;");
           $requete->execute();
           $listimg = $requete->fetchAll();
           $coms = new Image($listimg);
@@ -152,7 +163,7 @@ if (!isset($_SESSION)){
 
         <div class="form-label-group">
             <label>Photo</label>
-            <input type="post" name="name_img" class="form-control" placeholder="Veuillez inserer un lien provenant d'un navigateur." required>
+            <input type="post" name="name_img" class="form-control" placeholder="Veuillez inserer un lien provenant d'un navigateur. Exemple : NoelShack.com" required>
         </div>
           <br>
 

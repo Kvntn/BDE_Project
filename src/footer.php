@@ -22,5 +22,6 @@
             <a class="footer-icon twiI" href="https://twitter.com/" > <i class="fab fa-twitter"></i></a>
             <a class="footer-icon faceI" href="https://facebook.com/" > <i class="fab fa-facebook"></i></a>
             <small><a style="margin-left:20px;" class="text-decoration-none" href="legalnotice.php">Mentions légales</a></small>
+            <!-- <small><a style="margin-left:20px;" class="text-decoration-none" href="purchasing_terms.php">Conditions d'achat</a></small> -->
     </div>
 </footer>

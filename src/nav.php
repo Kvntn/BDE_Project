@@ -67,7 +67,6 @@
 
     <?php
       include("search.php");
-      include("head.php");
     ?>
 
     </ul>
