@@ -30,7 +30,7 @@ if (!isset($_SESSION)){
         </div> 
 
         <div class="form-group">
-            <label>Récurence de l'évènement</label>
+            <label>Récurrence de l'évènement</label>
             <select class="form-control" name="rec_event">
                 <option>Ponctuel</option>
                 <option>Journalier</option>
