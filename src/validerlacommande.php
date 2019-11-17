@@ -11,7 +11,7 @@
     $pid = $_SESSION['IDUtilisateur'];
     $prixtotal = 0;
     foreach($_SESSION['cart'] as $rows => $key){
-        $prixtotal = $prixtotal + ($key['PrixTotal']);
+        $prixtotal = $prixtotal + ($key['Prix_Total']);
     }
 
     $bdd = db_local::getInstance();
@@ -28,9 +28,9 @@
         $tnom = $key['NomProduit'];
         $tdesc = $key['Description'];
         $tprix = $key['Prix'];
-        $tphoto = $key['Photo'];
+        $tphoto = $key['PhotoProduit'];
         $tquantity = $key['Quantite'];
-        $tprixtotal = $key['PrixTotal'];
+        $tprixtotal = $key['Prix_Total'];
 
         $requete = $bdd->prepare("INSERT INTO `produits`(`NomProduit`, `Description`, `Prix`, `PhotoProduit`, `Quantite`, `Prix_Total`, `IDCommande`) 
         VALUES ('$tnom', '$tdesc', $tprix, '$tphoto', $tquantity, $tprixtotal, ".$getidcommmand['IDCommande'].")");
@@ -54,7 +54,7 @@
     '.$msg;
     mail($mail,$subject,$send, $header);
   
-    
+   /* 
     //Send mail to BDE
 
     $command = $bdd->prepare("SELECT NomProduit,Quantite FROM produits INNER JOIN commande ON commande.IDCommande = produits.IDCommande WHERE IDUtilisateur = $pid");
@@ -76,7 +76,7 @@
     Objet : '.$subject.'
     '.$msg;
     mail("teamg2trks@gmail.com",$subject,$send, $header);
-
+*/
 
     //keep this line at end of file
     echo '

@@ -26,7 +26,7 @@
       $requete->closeCursor();
 
       $produit['Quantite'] = $_POST['quantity'];
-      $produit['PrixTotal'] = $produit['Quantite']*$produit['Prix'];
+      $produit['Prix_Total'] = $produit['Quantite']*$produit['Prix'];
 
       array_push($_SESSION['cart'],$produit);
     }

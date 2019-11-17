@@ -19,7 +19,7 @@ class Cart
 		  echo '<tr>
               <th scope="row" class="border-0">
                 <div class="p-2">
-                    <img src="',$key['Photo'],'" alt=""  style="max-width:70px; max-height:70px;" class="img-fluid rounded shadow-sm">
+                    <img src="',$key['PhotoProduit'],'" alt=""  style="max-width:70px; max-height:70px;" class="img-fluid rounded shadow-sm">
                     <div class="ml-3 d-inline-block align-middle">
                         <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"></a></h5>
                     </div>

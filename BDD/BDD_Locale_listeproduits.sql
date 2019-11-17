@@ -1,4 +1,4 @@
-INSERT INTO `listeproduits`(`NomProduit`, `Description`, `Prix`, `Photo`, `Categorie`) VALUES 
+INSERT INTO `listeproduits`(`NomProduit`, `Description`, `Prix`, `PhotoProduit`, `Categorie`) VALUES 
 ('Hoodie noir et rouge', 'Hoodie aux couleurs du CESI. Taille unique.', 42, 'https://scene7.zumiez.com/is/image/zumiez/pdp_hero/Broken-Promises-Red-Handed-Black-%26-Red-Hoodie-_304917.jpg', 'Hoodie'),
 ('Hoodie noir et rouge EXIA', 'Hoodie aux couleurs du CESI pour les informaticiens. Taille unique.', 42, 'http://www.conda-racing.com/wp-content/uploads/2018/05/cookies-mens-hoodies-sweatshirts-thin-mint-black-red-hoodie-black.jpg', 'Hoodie'),
 ('Hoodie bleu blanc rouge', 'Hoodie aux couleurs du CESI et de la France. Taille unique.', 42, 'https://cdn.laboutiqueofficielle.com/resize/427x427-s/products/2017/05/04/lbo_104788_FAB_SHALBO-192_20190821T145302_01.jpg', 'Hoodie'),
