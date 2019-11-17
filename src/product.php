@@ -47,6 +47,12 @@ if (!isset($_SESSION)){
                     <option value=5>5</option>
                 </select><br>
                 <input type="submit" name="submit" class="btn btn-default" style="border:1px solid gray;" type="submit" value="Ajouter au panier">
+                <?php
+                if(@$_SESSION['Statut'] == 1) {
+                    echo '<a class="btn btn-outline-danger" href="./db_related/script_delete_produit.php?id='.$_GET['id'].'" role="button">Supprimer</a>';
+                    var_dump($_GET['id']);
+                }
+                ?>
             </form>
         </div>
         </div>
