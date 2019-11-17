@@ -53,22 +53,22 @@ include("nav.php");
     $header.='Content-Transfert-Encocdin: 8bit';
     $mail=$_SESSION['Email'];
     $subject='Commande';
-    $msg='Nous avons bien pris en compte votre commande. Vous pouvez venir la recuperer au bureau du BDE.';
+    $msg='Nous avons bien pris en compte votre commande.
+            Vous pouvez venir la recuperer au bureau du BDE sous 24h.
+            Passez ce delai il vous sera impossible de recuperer vos articles';
     $send='
     Objet : '.$subject.'
     '.$msg;
     mail($mail,$subject,$send, $header);
   
-   /* 
     //Send mail to BDE
 
-    $command = $bdd->prepare("SELECT NomProduit,Quantite FROM produits INNER JOIN commande ON commande.IDCommande = produits.IDCommande WHERE IDUtilisateur = $pid");
+    $command = $bdd->prepare("SELECT IDCommande FROM commande WHERE IDUtilisateur = $pid");
     $command->execute();
     $display = $command->fetchAll();
     $command->closeCursor();
     $nb = count($display)-1;
-    $nomProduit = $display[$nb]['NomProduit'];
-    $quantite = $display[$nb]['Quantite'];
+    $idcommande = $display[$nb]['IDCommande'];
     $header="MIME-Version: 1.0\r\n";
     $header.='From: teamg2trks@gmail.com \r\n';
     $header.='Content-Type:text/html;charset="utf-8"'."\n";
@@ -76,12 +76,12 @@ include("nav.php");
     $fname=$_SESSION['firstname'];
     $lname=$_SESSION['name'];
     $subject='Commande';
-    $msg=$fname.' '.$lname.' a commandé '.$nomProduit.' en '.$quantite.' examplaire';
+    $msg=$fname.' '.$lname.' a commandé. Il possede la commande '.$idcommande;
     $send='
     Objet : '.$subject.'
     '.$msg;
     mail("teamg2trks@gmail.com",$subject,$send, $header);
-*/
+
 
     //keep this line at end of file
     echo '
