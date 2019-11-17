@@ -10,7 +10,7 @@ try{
 
 $bdd = db_local::getInstance();
 
-$requete = $bdd->prepare("INSERT INTO `evenements`(`IDEvenement`, `NomEvenement`, `Description`, `Date`, `Prix`, `Recurence`) 
+$requete = $bdd->prepare("INSERT INTO `evenements`(`IDEvenement`, `NomEvenement`, `Description`, `Date`, `Prix`, `Recurrence`) 
                             VALUES (null,:nevent,:devent,:date,:pevent,:revent)");
 
 
