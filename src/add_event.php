@@ -29,12 +29,23 @@ if (!isset($_SESSION)){
             </div>
         </div> 
 
+        <div class="form-group">
+            <label>Récurence de l'évènement</label>
+            <select class="form-control" name="rec_event">
+                <option>Ponctuel</option>
+                <option>Journalier</option>
+                <option>Hebodomabaire</option>
+                <option>Mensuel</option>
+                <option>Annuel</option>
+            </select>
+        </div>
+        
         <div class="form-label-group">
             <label>Prix</label>
             <input type="int" name="prix_event"class="form-control" placeholder="" required>
             <br>
         </div>
-       
+               
         <button class="btn btn-secondary" type="submit">Ajouter l'évènement</button>
 
     </form>
